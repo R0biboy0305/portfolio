@@ -1,0 +1,14 @@
+[
+  {
+  "lat": 0.6737,
+  "lng": 23.47295,
+  "label": "A propos",
+  "url": "/About"
+},
+  {
+    "lat": -3.01184,
+    "lng": -23.42156,
+    "label": "Mes projets",
+    "url": "/projets"
+  }
+]
