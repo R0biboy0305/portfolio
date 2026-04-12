@@ -64,17 +64,8 @@ export default function CustomGlobe() {
         });
     }, []);
 
-    useEffect(() => {
-        fetch("/assets/countries/label.json")
-            .then((r) => r.json())
-            .then((data) => setLabels(data))
-            .catch((err) => console.error("Erreur de fetch :", err));
-
-    }, []);
-
-
     return (
-        <div ref={containerRef} className="overflow-hidden w-full h-screen flex justify-center items-center cursor-grab relative" >
+        <div ref={containerRef} className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative" >
             <Globe
                 ref={globeRef}
                    backgroundColor="rgba(255, 255, 255, 0)"
@@ -85,18 +76,6 @@ export default function CustomGlobe() {
                    polygonSideColor={() => "rgba(255, 255, 255, 0.02)"}
                    polygonStrokeColor={() => "rgba(255, 255, 255, 0.6)"}
                    animateIn={true}
-                   labelsData={labels}
-                   labelLat={(d: any) => d.lat}
-                   labelLng={(d: any) => d.lng}
-                   labelText={(d: any) => d.label || ""}
-                   labelSize={2}
-                   labelDotRadius={4}
-                   labelAltitude={0.04}
-                   labelDotOrientation={() => "top"}
-                   labelColor={() => "#ffffff"}
-                   labelResolution={3}
-                    onLabelClick={(d: any) => d?.url && router.push(d.url)}
-
             />
         </div>
     )

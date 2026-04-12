@@ -65,7 +65,7 @@ export default function About() {
                         </button>
                         <div className="flex-1 w-full relative">
                             <div
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-200 -z-10 rounded-full bg-radial-[at_50%_50%] from-indigo-800/50 to-transparent to-70%">
+                                className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-300 -z-10 rounded-full bg-radial-[at_50%_50%] from-indigo-800/50 to-transparent to-70%">
                             </div>
                             {section[step]}
                             <ul className="flex justify-center gap-2 mt-4">
