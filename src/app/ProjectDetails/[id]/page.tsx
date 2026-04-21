@@ -6,6 +6,7 @@ import ImageSlider from "@/app/components/ImageSlider/ImageSlider";
 import TechFuncSlider from "@/app/components/TechFuncSlider/TechFuncSlider";
 import Link from "next/link";
 import {ArrowLeft} from "lucide-react";
+import { notFound } from "next/navigation";
 
 export default async function ProjectDetails({params}: { params: { id: string } }) {
 
@@ -23,6 +24,10 @@ export default async function ProjectDetails({params}: { params: { id: string } 
             images: true
         }
     })
+
+    if(!project){
+        notFound();
+    }
 
     return (
        <div className="text-white flex flex-col gap-20 max-w-6xl mx-auto relative">
