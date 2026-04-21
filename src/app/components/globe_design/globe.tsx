@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import * as THREE from "three";
 export default function CustomGlobe() {
 
-    const globeRef = useRef(null);
-    const containerRef = useRef<never>(null);
+    const globeRef = useRef<any>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [globe, setGlobe] = useState({features: []});
     const [size, setSize] = useState({width: 0});
-    const [labels, setLabels] = useState<never[]>([]);
+    const [labels, setLabels] = useState<any[]>([]);
     const router = useRouter();
 
     useEffect(() => {
