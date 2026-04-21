@@ -27,9 +27,11 @@ export default function CustomGlobe() {
 
     useEffect(() => {
         if (globeRef.current) {
-            globeRef.current.controls().autoRotate = true;
-            globeRef.current.controls().autoRotateSpeed = 0.5;
-            globeRef.current.controls().enableZoom = false;
+            const globe : any = globeRef.current;
+
+            globe.current.controls().autoRotate = true;
+            globe.current.controls().autoRotateSpeed = 0.5;
+            globe.current.controls().enableZoom = false;
         }
     }, []);
 
