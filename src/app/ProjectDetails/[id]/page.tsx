@@ -26,7 +26,7 @@ export default async function ProjectDetails({params}: { params: { id: string } 
     })
 
     if(!project){
-        notFound();
+        return notFound();
     }
 
     return (
