@@ -29,6 +29,8 @@ export default async function ProjectDetails({params}: { params: { id: string } 
         return notFound();
     }
 
+    const safeProject = project!;
+
     return (
        <div className="text-white flex flex-col gap-20 max-w-6xl mx-auto relative">
            <div
@@ -42,33 +44,33 @@ export default async function ProjectDetails({params}: { params: { id: string } 
            </div>
            <span>Retour</span>
        </Link>
-           <h1 className="text-8xl font-bold italic text-center text-transparent [-webkit-text-stroke:2px_white]">{project.title}</h1>
+           <h1 className="text-8xl font-bold italic text-center text-transparent [-webkit-text-stroke:2px_white]">{safeProject.title}</h1>
            <div className="w-full h-[1px] bg-white"></div>
            <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto max-h-fit">
                <div className="justify-self-start">
-                    <ImageSlider images={project.images.slice(0,2)}/>
+                    <ImageSlider images={safeProject.images.slice(0,2)}/>
                </div>
                <div className="space-y-4 justify-self-end">
                    <h2 className="font-bold text-6xl">Présentation</h2>
-                   <p className="text-sm w-sm">{project.preview}</p>
+                   <p className="text-sm w-sm">{safeProject.preview}</p>
                </div>
            </div>
            <div className="w-full h-[1px] bg-white"></div>
            <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
                <div className="space-y-4">
                    <h2 className="font-bold text-6xl">Objectifs</h2>
-                   <p className="text-sm w-sm">{project.objectif}</p>
+                   <p className="text-sm w-sm">{safeProject.objectif}</p>
                </div>
                <div className="justify-self-end h-fit">
-                   <ImageSlider images={project.images.slice(2)}/>
+                   <ImageSlider images={safeProject.images.slice(2)}/>
                </div>
            </div>
            <div className="w-full h-[1px] bg-white"></div>
-           <TechFuncSlider technologies={project.technologies} functions={project.functions}/>
+           <TechFuncSlider technologies={safeProject.technologies} functions={safeProject.functions}/>
            <div className="w-full h-[1px] bg-white"></div>
            <div className="space-y-4">
                <h2 className="font-bold text-6xl">Bilan</h2>
-               <p className="text-sm w-sm">{project.bilan}</p>
+               <p className="text-sm w-sm">{safeProject.bilan}</p>
            </div>
            <div className="w-full h-[1px] bg-white"></div>
        </div>
