@@ -3,6 +3,10 @@ import Globe from "react-globe.gl";
 import {useEffect, useState, useRef, useMemo} from "react";
 import { useRouter } from "next/navigation";
 import * as THREE from "three";
+import dynamic from "next/dynamic";
+
+const GlobeDynamic = dynamic(() => import("react-globe.gl"), { ssr: false });
+
 export default function CustomGlobe() {
 
     const globeRef = useRef<any>(null);
@@ -26,13 +30,18 @@ export default function CustomGlobe() {
     }, []);
 
     useEffect(() => {
-        if (globeRef.current) {
-            const globe : any = globeRef.current;
+        const timer = setTimeout(() => {
+            if (globeRef.current && typeof globeRef.current.controls === 'function') {
+                const controls = globeRef.current.controls();
+                if (controls) {
+                    controls.autoRotate = true;
+                    controls.autoRotateSpeed = 0.5;
+                    controls.enableZoom = false;
+                }
+            }
+        }, 500);
 
-            globe.current.controls().autoRotate = true;
-            globe.current.controls().autoRotateSpeed = 0.5;
-            globe.current.controls().enableZoom = false;
-        }
+        return () => clearTimeout(timer);
     }, []);
 
     useEffect(() => {
