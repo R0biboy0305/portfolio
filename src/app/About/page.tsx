@@ -42,7 +42,7 @@ export default function About() {
             </Link>
             <div className="flex flex-row gap-8 items-center py-4">
                 <div>
-                    <Image src={"/assets/images/pdp.jpg"} alt={"pdp"} width={200} height={200}
+                    <Image src={"/assets/images/pdp400x400.jpg"} alt={"pdp"} width={200} height={200}
                            className="rounded-full border-1 border-white"/>
                 </div>
                 <div className="flex flex-col gap-3 max-w-xl text-white">
