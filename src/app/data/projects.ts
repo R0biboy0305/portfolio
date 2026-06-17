@@ -1,19 +1,7 @@
-/**
- * Source de données statique des projets — remplace Prisma pour les lectures.
- * Pour convertir en fichier .mdx, configurez @next/mdx dans next.config.ts
- * et renommez ce fichier en projects.mdx (les exports JS/TS sont valides en MDX).
- *
- * Structure identique au schéma Prisma :
- *   Post > Technology[], Function[], Image[]
- */
-
-// ─── Types (miroir du schéma Prisma) ─────────────────────────────────────────
-
 export type Technology = {
     id: string;
     title: string;
     description: string;
-    /** Clé d'icône — doit correspondre à l'iconMap dans Icon.tsx (insensible à la casse) */
     icon: string;
     postId: string;
 };
@@ -45,8 +33,6 @@ export type Project = {
     images: ProjectImage[];
 };
 
-// ─── Données ──────────────────────────────────────────────────────────────────
-
 const projects: Project[] = [
     {
         id: "portfolio",
@@ -58,29 +44,27 @@ const projects: Project[] = [
         bilan:
             "Projet qui démontre mes compétences en développement full-stack, design UI/UX et intégration 3D. Architecture moderne, code typé et expérience utilisateur soignée.",
         description:
-            "Portfolio développé pour mettre en valeur mon parcours et mes réalisations. Basé sur Next.js 15 avec App Router, Tailwind CSS v4, visuels 3D via Three.js et react-globe.gl, stockage PostgreSQL via Prisma.",
+            "Portfolio développé pour mettre en valeur mon parcours et mes réalisations. Basé sur Next.js 15 avec App Router, Tailwind CSS v4, visuels 3D via Three.js et react-globe.gl.",
         published: true,
         technologies: [
             { id: "t1", title: "Next.js",      icon: "next",       description: "Framework React full-stack avec App Router et SSR",  postId: "portfolio" },
             { id: "t2", title: "TypeScript",   icon: "typescript", description: "Typage statique strict sur tout le codebase",        postId: "portfolio" },
             { id: "t3", title: "Tailwind CSS", icon: "tailwind",   description: "Styles utility-first, glassmorphism, Tailwind v4",  postId: "portfolio" },
             { id: "t4", title: "React",        icon: "react",      description: "UI composants, hooks, React 19",                    postId: "portfolio" },
-            { id: "t5", title: "PostgreSQL",   icon: "mysql",      description: "Base de données relationnelle via Prisma ORM",      postId: "portfolio" },
+            { id: "t5", title: "Three.js",     icon: "javascript", description: "Globe 3D interactif et anneaux animés",             postId: "portfolio" },
             { id: "t6", title: "Git",          icon: "git",        description: "Versionnement et gestion des branches",             postId: "portfolio" },
         ],
         functions: [
-            { id: "f1", title: "Globe 3D interactif",   description: "Globe animé avec react-globe.gl, anneaux Three.js et effets lumineux.",           postId: "portfolio" },
-            { id: "f2", title: "Navigation One-Page",   description: "Scroll ancré fluide avec scroll spy dans le header et smooth scroll CSS.",         postId: "portfolio" },
-            { id: "f3", title: "Glassmorphism UI",      description: "Cartes semi-transparentes, backdrop-blur, gradients et effets de profondeur.",      postId: "portfolio" },
-            { id: "f4", title: "Animations au scroll",  description: "Apparitions progressives (fade + slide) via IntersectionObserver sur chaque section.", postId: "portfolio" },
-            { id: "f5", title: "Gestion de projets",    description: "Ajout de projets via formulaire admin avec upload d'images et stockage Prisma.",     postId: "portfolio" },
+            { id: "f1", title: "Globe 3D interactif",   description: "Globe animé avec react-globe.gl, auto-rotation et effets lumineux.",                    postId: "portfolio" },
+            { id: "f2", title: "Navigation One-Page",   description: "Scroll ancré fluide avec scroll spy dans le header et smooth scroll CSS.",              postId: "portfolio" },
+            { id: "f3", title: "Glassmorphism UI",      description: "Cartes semi-transparentes, backdrop-blur, gradients et effets de profondeur.",          postId: "portfolio" },
+            { id: "f4", title: "Animations au scroll",  description: "Apparitions progressives (fade + slide) via IntersectionObserver sur chaque section.",  postId: "portfolio" },
         ],
         images: [
             { id: "i1", url: "assets/images/pdp400x400.jpg", postId: "portfolio" },
         ],
     },
 
-    // ─── Modèle à dupliquer pour vos projets ────────────────────────────────
     {
         id: "projet-2",
         title: "Nom du projet",

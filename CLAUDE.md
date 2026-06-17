@@ -29,35 +29,33 @@ Tu es un expert en design de portfolios pour développeurs. Tu produis du TypeSc
 ```
 src/
 ├── app/
-│   ├── ProjectDetails/[id]/      # Détail projet dynamique
+│   ├── ProjectDetails/[id]/      # Détail projet dynamique (SSR)
+│   ├── Projets/ProjectClient.tsx # Liste des projets (Client Component)
 │   ├── components/
-│   │   ├── header/               # Header + scroll spy
-│   │   ├── footer/
-│   │   ├── layout/               # LayoutClientShell (wrapper transparent)
-│   │   ├── icon/                 # Mapper d'icônes (nameKey → SVG)
-│   │   ├── ImageSlider/          # Slider images
+│   │   ├── Header/               # Header + scroll spy ("use client")
+│   │   │   └── __components/NavButton/
+│   │   ├── Footer/               # Footer statique
+│   │   ├── Layout/               # LayoutClientShell (wrapper transparent)
+│   │   ├── Icon/                 # Mapper d'icônes (nameKey → SVG)
+│   │   ├── Globe/                # Globe 3D (chargé avec ssr: false)
+│   │   ├── Home/                 # Hero layout (texte, CTA, tech icons)
+│   │   ├── ImageSlider/          # Slider images glassmorphism avec flèches
 │   │   ├── TechFuncSlider/       # Tabs Tech / Fonctionnalités
-│   │   ├── globe_design/         # Globe 3D (ssr: false)
-│   │   ├── lineGlobe/            # Anneaux Three.js
-│   │   ├── techstack/            # Section compétences
-│   │   ├── parcours/             # Timeline expériences
-│   │   ├── formation/            # Formation, langues, qualités
-│   │   └── HomePage/             # Hero section layout
-│   ├── context/ThemeContext.tsx
-│   ├── layout.tsx                # Root layout (Poppins, ThemeProvider)
+│   │   ├── TechStack/            # Section compétences (grille d'icônes)
+│   │   ├── Parcours/             # Timeline expériences professionnelles
+│   │   ├── Formation/            # Formation, langues, qualités, intérêts
+│   │   ├── Sections/             # Pages One-Page assemblées ici
+│   │   │   ├── HeroSection.tsx   # Globe + HomePageLayout
+│   │   │   ├── ProjectsSection.tsx # Lit app/data/projects.ts
+│   │   │   └── AboutSection.tsx  # Tabs TechStack/Parcours/Formation
+│   │   └── ui/                   # Composants UI réutilisables
+│   │       ├── AnimatedSection.tsx # Scroll reveal (IntersectionObserver)
+│   │       └── BackButton.tsx    # Bouton retour
+│   ├── data/
+│   │   └── projects.ts           # ⚠️ SEULE source de données — éditer ici
+│   ├── layout.tsx                # Root layout (Poppins, Header, Footer)
 │   ├── page.tsx                  # One-Page : Hero + Projets + About
 │   └── globals.css
-├── components/
-│   ├── sections/
-│   │   ├── HeroSection.tsx       # Globe + HomePageLayout ("use client")
-│   │   ├── ProjectsSection.tsx   # Lit src/data/projects.ts
-│   │   └── AboutSection.tsx      # Tabs TechStack/Parcours/Formation
-│   └── ui/
-│       ├── AnimatedSection.tsx   # Scroll reveal (IntersectionObserver)
-│       ├── button.tsx            # shadcn Button
-│       └── badge.tsx             # shadcn Badge
-├── data/
-│   └── projects.ts               # ⚠️ SEULE source de données — éditer ici pour ajouter/modifier un projet
 └── lib/
     └── utils.ts                  # Utilitaires shadcn (cn)
 ```

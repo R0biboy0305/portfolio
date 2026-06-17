@@ -1,5 +1,5 @@
 import React from "react";
-import IconTech from "@/app/components/icon/Icon";
+import IconTech from "@/app/components/Icon/Icon";
 
 type IconItem = { nameKey: string; label: string };
 type Category = { name: string; icons: IconItem[] };

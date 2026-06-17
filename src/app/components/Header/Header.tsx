@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import NavButton from "@/app/components/header/__components/NavButton/NavButton";
+import NavButton from "@/app/components/Header/__components/NavButton/NavButton";
 import { HomeIcon, Sun } from "lucide-react";
 
 const SECTIONS = ["hero", "projets", "about"] as const;

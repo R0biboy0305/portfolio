@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import IconTech from "@/app/components/icon/Icon";
-import AnimatedSection from "@/components/ui/AnimatedSection";
+import IconTech from "@/app/components/Icon/Icon";
+import AnimatedSection from "@/app/components/ui/AnimatedSection";
 
 export default function ProjetsList({ initialProjects }: { initialProjects: any[] }) {
     return (

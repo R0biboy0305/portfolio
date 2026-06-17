@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Github, Linkedin, ArrowRight } from "lucide-react";
-import IconTech from "@/app/components/icon/Icon";
+import IconTech from "@/app/components/Icon/Icon";
 
 const mainTech = [
     { nameKey: "react",      label: "React" },

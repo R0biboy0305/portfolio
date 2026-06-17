@@ -1,9 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import HomePageLayout from "@/app/components/HomePage/HomePageLayout";
+import HomePageLayout from "@/app/components/Home/HomePageLayout";
 
-const GlobeDynamic = dynamic(() => import("@/app/components/globe_design/globe"), {
+const GlobeDynamic = dynamic(() => import("@/app/components/Globe/Globe"), {
     ssr: false,
 });
 

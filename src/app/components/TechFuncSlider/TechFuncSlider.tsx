@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import IconTech from "@/app/components/icon/Icon";
+import IconTech from "@/app/components/Icon/Icon";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 export default function TechFuncSlider({ technologies, functions }: { technologies: any[], functions: any[] }) {

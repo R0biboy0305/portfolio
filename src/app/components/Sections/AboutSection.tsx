@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import TechStack from "@/app/components/techstack/techStack";
-import Parcours from "@/app/components/parcours/parcours";
-import Formation from "@/app/components/formation/formation";
-import AnimatedSection from "@/components/ui/AnimatedSection";
+import TechStack from "@/app/components/TechStack/TechStack";
+import Parcours from "@/app/components/Parcours/Parcours";
+import Formation from "@/app/components/Formation/Formation";
+import AnimatedSection from "@/app/components/ui/AnimatedSection";
 
 const TABS = [
     { label: "Compétences", key: "stack" },
@@ -21,10 +21,8 @@ export default function AboutSection() {
     return (
         <div className="max-w-6xl mx-auto flex flex-col gap-16 px-6 py-24 relative">
 
-            {/* Ambient glow */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] -z-10 rounded-full bg-radial-[at_80%_20%] from-indigo-900/20 to-transparent to-70% pointer-events-none" />
 
-            {/* Section header */}
             <AnimatedSection>
                 <div className="flex flex-col gap-3">
                     <span className="text-indigo-400 text-xs font-medium tracking-widest uppercase">À propos</span>
@@ -35,7 +33,6 @@ export default function AboutSection() {
                 </div>
             </AnimatedSection>
 
-            {/* Profile card */}
             <AnimatedSection delay={100}>
                 <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <div className="shrink-0">
@@ -61,11 +58,8 @@ export default function AboutSection() {
                 </div>
             </AnimatedSection>
 
-            {/* Tab navigation + content */}
             <AnimatedSection delay={200}>
                 <div className="flex flex-col gap-8">
-
-                    {/* Tabs */}
                     <div className="flex gap-2 flex-wrap">
                         {TABS.map((tab, i) => (
                             <button
@@ -81,8 +75,6 @@ export default function AboutSection() {
                             </button>
                         ))}
                     </div>
-
-                    {/* Content */}
                     <div className="min-h-[400px]">
                         {sections[step]}
                     </div>

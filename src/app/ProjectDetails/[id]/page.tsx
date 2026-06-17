@@ -3,8 +3,8 @@ import React from "react";
 import ImageSlider from "@/app/components/ImageSlider/ImageSlider";
 import TechFuncSlider from "@/app/components/TechFuncSlider/TechFuncSlider";
 import { notFound } from "next/navigation";
-import BackButton from "@/components/ui/BackButton";
-import projects from "@/data/projects";
+import BackButton from "@/app/components/ui/BackButton";
+import projects from "@/app/data/projects";
 
 export default async function ProjectDetails({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
