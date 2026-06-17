@@ -11,6 +11,8 @@ const mainTech = [
     { nameKey: "Php",        label: "PHP" },
     { nameKey: "Mysql",      label: "MySQL" },
     { nameKey: "Git",        label: "Git" },
+    { nameKey: "Vue",        label: "Vue" },
+    { nameKey: "Laravel",        label: "Laravel" },
 ];
 
 export default function HomePageLayout() {

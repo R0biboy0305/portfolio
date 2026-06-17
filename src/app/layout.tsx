@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="fr" className={cn(poppins.variable, "font-sans")}>
         <body className="bg-first-color flex flex-col">
             <Header />
-            <main className="relative flex-1 min-h-screen">
+            <main className="relative flex-1 min-h-screen pt-24">
                 <LayoutClientShell>{children}</LayoutClientShell>
             </main>
             <Footer />

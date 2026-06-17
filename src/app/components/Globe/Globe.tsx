@@ -1,26 +1,34 @@
 "use client";
 import Globe from "react-globe.gl";
-import { useEffect, useState, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 
-export default function CustomGlobe() {
+type GeoData = { features: object[] };
 
+export default function CustomGlobe() {
     const globeRef = useRef<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const [globe, setGlobe] = useState({ features: [] });
-    const [size, setSize] = useState({ width: 0 });
+    const dataRef = useRef<GeoData>({ features: [] });
 
     useEffect(() => {
-        fetch("/assets/countries/countries.json")
-            .then((res) => res.json())
-            .then(data => {
-                if (data && data.features && Array.isArray(data.features)) {
-                    setGlobe(data);
-                } else {
-                    setGlobe({ features: [] });
-                }
-            })
-            .catch(() => setGlobe({ features: [] }));
+        const load = () =>
+            fetch("/assets/countries/countries.json")
+                .then((res) => res.json())
+                .then((data: GeoData) => {
+                    if (data?.features && Array.isArray(data.features)) {
+                        if (globeRef.current) {
+                            globeRef.current.polygonsData(data.features);
+                        }
+                        dataRef.current = data;
+                    }
+                })
+                .catch(() => {});
+
+        if ("requestIdleCallback" in window) {
+            (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(load);
+        } else {
+            setTimeout(load, 200);
+        }
     }, []);
 
     useEffect(() => {
@@ -37,31 +45,26 @@ export default function CustomGlobe() {
         return () => clearTimeout(timer);
     }, []);
 
-    useEffect(() => {
-        if (!containerRef.current) return;
-        const el = containerRef.current;
-        const updateSize = () => setSize({ width: Math.floor(el.clientWidth) });
-        updateSize();
-        const ro = new ResizeObserver(updateSize);
-        ro.observe(el);
-        return () => ro.disconnect();
-    }, []);
-
-    const customMaterial = useMemo(() => {
-        return new THREE.MeshBasicMaterial({
-            color: "#0a0a0a",
-            transparent: true,
-            opacity: 1,
-        });
-    }, []);
+    const customMaterial = useMemo(
+        () =>
+            new THREE.MeshBasicMaterial({
+                color: "#0a0a0a",
+                transparent: true,
+                opacity: 1,
+            }),
+        []
+    );
 
     return (
-        <div ref={containerRef} className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative">
+        <div
+            ref={containerRef}
+            className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative"
+        >
             <Globe
                 ref={globeRef}
                 backgroundColor="rgba(255, 255, 255, 0)"
                 globeMaterial={customMaterial}
-                polygonsData={Array.isArray(globe?.features) ? globe.features : []}
+                polygonsData={[]}
                 polygonAltitude={0.03}
                 polygonCapColor={() => "rgba(255, 255, 255, 0.2)"}
                 polygonSideColor={() => "rgba(255, 255, 255, 0.02)"}

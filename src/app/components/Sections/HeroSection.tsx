@@ -5,6 +5,11 @@ import HomePageLayout from "@/app/components/Home/HomePageLayout";
 
 const GlobeDynamic = dynamic(() => import("@/app/components/Globe/Globe"), {
     ssr: false,
+    loading: () => (
+        <div className="hidden lg:flex lg:w-1/2 h-screen items-center justify-center">
+            <div className="w-80 h-80 rounded-full border border-white/5 animate-pulse bg-white/[0.02]" />
+        </div>
+    ),
 });
 
 export default function HeroSection() {
