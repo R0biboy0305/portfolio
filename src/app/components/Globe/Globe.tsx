@@ -1,31 +1,25 @@
 "use client";
 import Globe from "react-globe.gl";
-import { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import * as THREE from "three";
-
-type GeoData = { features: object[] };
 
 export default function CustomGlobe() {
     const globeRef = useRef<any>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const dataRef = useRef<GeoData>({ features: [] });
+    const [features, setFeatures] = useState<object[]>([]);
 
     useEffect(() => {
         const load = () =>
             fetch("/assets/countries/countries.json")
                 .then((res) => res.json())
-                .then((data: GeoData) => {
+                .then((data) => {
                     if (data?.features && Array.isArray(data.features)) {
-                        if (globeRef.current) {
-                            globeRef.current.polygonsData(data.features);
-                        }
-                        dataRef.current = data;
+                        setFeatures(data.features);
                     }
                 })
                 .catch(() => {});
 
         if ("requestIdleCallback" in window) {
-            (window as Window & { requestIdleCallback: (cb: () => void) => void }).requestIdleCallback(load);
+            (window as any).requestIdleCallback(load);
         } else {
             setTimeout(load, 200);
         }
@@ -56,15 +50,12 @@ export default function CustomGlobe() {
     );
 
     return (
-        <div
-            ref={containerRef}
-            className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative"
-        >
+        <div className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative">
             <Globe
                 ref={globeRef}
                 backgroundColor="rgba(255, 255, 255, 0)"
                 globeMaterial={customMaterial}
-                polygonsData={[]}
+                polygonsData={features}
                 polygonAltitude={0.03}
                 polygonCapColor={() => "rgba(255, 255, 255, 0.2)"}
                 polygonSideColor={() => "rgba(255, 255, 255, 0.02)"}
