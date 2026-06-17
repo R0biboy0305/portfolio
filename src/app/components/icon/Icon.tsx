@@ -1,45 +1,45 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSymfony, faDartLang, faHtml5, faCss3, faPhp, faGitAlt, faDocker} from "@fortawesome/free-brands-svg-icons";
 
-function Dart({size = 24}: { size?: number }) {
+function Dart({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faDartLang} fontSize={40}/>
+        <FontAwesomeIcon icon={faDartLang} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Html({size = 24}: { size?: number }) {
+function Html({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faHtml5} fontSize={40}/>
+        <FontAwesomeIcon icon={faHtml5} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Css({size = 24}: { size?: number }) {
+function Css({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faCss3} fontSize={40}/>
+        <FontAwesomeIcon icon={faCss3} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Php({size = 24}: { size?: number }) {
+function Php({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faPhp} fontSize={40}/>
+        <FontAwesomeIcon icon={faPhp} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Symfony({size = 24}: { size?: number }) {
+function Symfony({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faSymfony} fontSize={40}/>
+        <FontAwesomeIcon icon={faSymfony} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Git({size = 24}: { size?: number }) {
+function Git({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faGitAlt} fontSize={40}/>
+        <FontAwesomeIcon icon={faGitAlt} style={{ fontSize: size, color: color }}/>
     )
 }
 
-function Docker({size = 24}: { size?: number }) {
+function Docker({size = 24, color = "white"}: { size?: number; color?: string }) {
     return (
-        <FontAwesomeIcon icon={faDocker} fontSize={40}/>
+        <FontAwesomeIcon icon={faDocker} style={{ fontSize: size, color: color }}/>
     )
 }
 
@@ -188,12 +188,12 @@ const iconMap: Record<string, React.ElementType> = {
     "firebase": Firebase,
 };
 
-export default function IconTech({nameKey, size=24}: {nameKey:string; size?: number;}){
+export default function IconTech({nameKey, size=24, color="white"}: {nameKey:string; size?: number; color?: string}) {
     const IconComponent = iconMap[nameKey.toLowerCase()];
 
     if (!IconComponent) {
         return <div style={{ width: size, height: size }} className="bg-gray-700 rounded-full flex items-center justify-center text-xs">?</div>;
     }
 
-    return <IconComponent size={size} />;
+    return <IconComponent size={size} color={color}/>;
 }

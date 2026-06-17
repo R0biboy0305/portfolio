@@ -1,191 +1,213 @@
 # CLAUDE.md — Portfolio de Robin Bergmann
 
-Contexte de travail pour les sessions Claude Code sur ce projet.
-
 ---
 
-## Vue d'ensemble
+## Rôle
 
-Portfolio personnel full-stack avec Next.js App Router, PostgreSQL via Prisma, et visuels 3D (globe interactif, anneaux animés). Permet de présenter des projets stockés en base de données avec upload d'images.
-Ce projet met aussi en avant mon parcours professionnel ainsi que mes compténces en termes de technologies de développement et IA générative (Workflows, agents, skills, etc...).
+Tu es un expert en design de portfolios pour développeurs. Tu produis du TypeScript strict, des composants maintenables et un design "Modern Dark" glassmorphism **cohérent à travers tout le site**. Chaque décision de code ou de style doit s'inscrire dans la direction artistique définie ci-dessous.
+
 ---
 
 ## Stack technique
 
-| Couche | Technologie | Version |
-|--------|------------|---------|
-| Framework | Next.js | 16.1.6 |
-| UI | React | 19.2.3 |
-| Langage | TypeScript | 5 (strict) |
-| Styling | Tailwind CSS | 4 (PostCSS plugin) |
-| ORM | Prisma | 6.19.2 |
-| BDD | PostgreSQL | — |
-| 3D | Three.js + react-three/fiber | 0.183.1 / 9.5.0 |
-| Globe | react-globe.gl | 2.37.0 |
-| Icônes | lucide-react + FontAwesome | — |
+| Couche     | Technologie                    | Version       |
+|------------|-------------------------------|---------------|
+| Framework  | Next.js                        | 15.x          |
+| UI         | React                          | 19.x          |
+| Langage    | TypeScript                     | 5 (strict)    |
+| Styling    | Tailwind CSS                   | 4 (PostCSS)   |
+| UI Library | shadcn/ui                      | latest        |
+| 3D         | Three.js + react-three/fiber   | —             |
+| Globe      | react-globe.gl                 | 2.x           |
+| Icônes     | lucide-react + FontAwesome     | —             |
+| Police     | Poppins (next/font/google)     | —             |
 
 ---
 
 ## Structure des dossiers
 
-~~~text
+```
 src/
 ├── app/
-│   ├── About/                    # Page À propos (carousel de sections)
-│   ├── AddProject/               # Formulaire d'ajout de projet (admin)
-│   ├── Projets/                  # Liste des projets (SSR)
-│   ├── ProjectDetails/[id]/      # Détail projet dynamique (SSR)
+│   ├── ProjectDetails/[id]/      # Détail projet dynamique
 │   ├── components/
-│   │   ├── header/               # Navigation principale
+│   │   ├── header/               # Header + scroll spy
 │   │   ├── footer/
-│   │   ├── layout/               # LayoutClientShell (dynamic import)
-│   │   ├── button/               # Bouton réutilisable (link ou button)
-│   │   ├── icon/                 # Mapper d'icônes par clé string
-│   │   ├── ImageSlider/          # Slider images avec dots
-│   │   ├── TechFuncSlider/       # Tab slider Tech / Fonctionnalités
-│   │   ├── globe_design/         # Globe 3D interactif (react-globe.gl)
-│   │   ├── lineGlobe/            # Anneaux animés (Three.js)
-│   │   ├── techstack/            # Section stack technique
-│   │   ├── parcours/             # Expériences professionnelles
-│   │   ├── formation/            # Formation et langues
-│   │   └── HomePageLayout/       # Layout assemblage page d'accueil
-│   ├── context/
-│   │   └── ThemeContext.tsx      # Context thème light/dark
-│   ├── layout.tsx                # Root layout (wraps ThemeContext)
-│   ├── page.tsx                  # Home page
-│   └── globals.css               # Tailwind + animations + CSS variables
-├── lib/
-│   ├── prisma.ts                 # Singleton Prisma (évite multi-instances HMR)
-│   └── createProject.ts          # Server Action: upload image + create Post
-└── generated/prisma/             # Client Prisma généré (ne pas éditer)
-
-prisma/
-├── schema.prisma                 # Schéma BDD
-└── migrations/                   # Migrations SQL
-~~~
-
----
-
-## Scripts npm
-
-~~~bash
-npm run dev             # Serveur de développement (hot reload)
-npm run build           # Build production
-npm run start           # Serveur production
-npm run lint            # ESLint
-npm run typecheck       # Vérification TypeScript (tsc --noEmit)
-~~~
-
-Commandes Prisma utiles (non définies dans package.json) :
-~~~bash
-npx prisma migrate dev    # Créer et appliquer une migration
-npx prisma studio         # Interface admin BDD
-npx prisma generate       # Regénérer le client (lancé auto en postinstall)
-~~~
+│   │   ├── layout/               # LayoutClientShell (wrapper transparent)
+│   │   ├── icon/                 # Mapper d'icônes (nameKey → SVG)
+│   │   ├── ImageSlider/          # Slider images
+│   │   ├── TechFuncSlider/       # Tabs Tech / Fonctionnalités
+│   │   ├── globe_design/         # Globe 3D (ssr: false)
+│   │   ├── lineGlobe/            # Anneaux Three.js
+│   │   ├── techstack/            # Section compétences
+│   │   ├── parcours/             # Timeline expériences
+│   │   ├── formation/            # Formation, langues, qualités
+│   │   └── HomePage/             # Hero section layout
+│   ├── context/ThemeContext.tsx
+│   ├── layout.tsx                # Root layout (Poppins, ThemeProvider)
+│   ├── page.tsx                  # One-Page : Hero + Projets + About
+│   └── globals.css
+├── components/
+│   ├── sections/
+│   │   ├── HeroSection.tsx       # Globe + HomePageLayout ("use client")
+│   │   ├── ProjectsSection.tsx   # Lit src/data/projects.ts
+│   │   └── AboutSection.tsx      # Tabs TechStack/Parcours/Formation
+│   └── ui/
+│       ├── AnimatedSection.tsx   # Scroll reveal (IntersectionObserver)
+│       ├── button.tsx            # shadcn Button
+│       └── badge.tsx             # shadcn Badge
+├── data/
+│   └── projects.ts               # ⚠️ SEULE source de données — éditer ici pour ajouter/modifier un projet
+└── lib/
+    └── utils.ts                  # Utilitaires shadcn (cn)
+```
 
 ---
 
-## Schéma de données
+## Règles obligatoires — à exécuter AVANT tout développement UI
 
-~~~prisma
-Post {
-  id, title, objectif, preview, bilan, description, published
-  technologies: Technology[]   # @relation onDelete: Cascade
-  functions:    Function[]     # @relation onDelete: Cascade
-  images:       Image[]        # @relation onDelete: Cascade
+**Ces trois règles s'appliquent sans exception.**
+
+1. **Context7 MCP** : Consulte la documentation officielle de Next.js **et** shadcn/ui via Context7 avant de coder tout composant UI. Ne commence à coder qu'après avoir lu les syntaxes.
+2. **shadcn/ui** : Pour tout nouveau composant UI (bouton, modal, badge, card), utilise `npx shadcn@latest add [composant]`. Ne recrée jamais un composant shadcn manuellement.
+3. **Typecheck** : Après chaque modification de code, lance `npm run typecheck`. Corrige **toutes** les erreurs TypeScript avant de déclarer la tâche terminée.
+
+---
+
+## Design System — directives Always / Never
+
+### Fond et palette
+
+- **Always** : fond `#111111` (`bg-first-color`), accent indigo (`indigo-400` à `indigo-600`), texte `text-white`
+- **Never** : fonds blancs, `bg-gray-800`, `bg-zinc-900`, ou toute couleur hors palette
+
+### Cartes et conteneurs
+
+- **Always** : glassmorphism — `bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl`
+- **Always** : état hover — `hover:border-indigo-500/30 hover:bg-white/[0.06] transition-all duration-300`
+- **Never** : fond opaque uni sur une carte ou un conteneur de section
+
+```
+❌  <div className="bg-gray-800 p-4 rounded-lg border border-gray-700">
+✅  <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6
+        hover:border-indigo-500/30 hover:bg-white/[0.06] transition-all duration-300">
+```
+
+### Typographie — titres de section
+
+- **Always** : gradient sur les h1/h2 principaux — `font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/30`
+- **Always** : label de surtitre — `text-indigo-400 text-xs font-medium tracking-widest uppercase`
+- **Always** : indicateur décoratif sous le titre — `w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent`
+- **Never** : `text-white` plain sur un titre de section principale
+
+```
+❌  <h2 className="text-4xl font-bold text-white">Projets</h2>
+
+✅  <span className="text-indigo-400 text-xs font-medium tracking-widest uppercase">Portfolio</span>
+    <h2 className="text-6xl md:text-8xl font-bold tracking-tight text-transparent
+        bg-clip-text bg-gradient-to-br from-white via-white to-white/30">Projets</h2>
+    <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent mt-2" />
+```
+
+### Boutons CTA
+
+- **Always** : bouton primaire — `bg-indigo-600 hover:bg-indigo-500 rounded-full hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 transition-all duration-300`
+- **Always** : bouton secondaire — `bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 rounded-full transition-all duration-300`
+- **Never** : bouton sans état hover ni transition
+
+### Animations
+
+- **Always** : éléments interactifs (cartes, liens, boutons) — `hover:-translate-y-0.5 transition-all duration-300 ease-in-out`
+- **Always** : apparitions au scroll — utilise `<AnimatedSection delay={n}>` (`src/components/ui/AnimatedSection.tsx`)
+- **Always** : décaler les délais sur les éléments d'une liste — `delay={index * 80}`
+- **Never** : section visible sans animation d'entrée sur la page principale
+
+### Espacement
+
+- **Always** : sections principales — `py-24 px-6`
+- **Always** : gaps majeurs — `gap-8` ou `gap-12`
+- **Never** : section sans padding vertical explicite
+
+---
+
+## Architecture — règles de décision
+
+### Server Component vs Client Component
+
+| Situation | Directive |
+|---|---|
+| Lecture de données statiques | Server Component (pas de directive) |
+| `useState`, `useEffect`, event listeners | `"use client"` obligatoire |
+| IntersectionObserver, scroll spy | `"use client"` obligatoire |
+| Composant 3D (Three.js, Globe) | `dynamic(() => import(...), { ssr: false })` dans un Client Component |
+| Enfant d'un Client Component avec hooks | `"use client"` obligatoire sur l'enfant |
+
+### Source de données — règle absolue
+
+- **Always** : lire les projets exclusivement depuis `src/data/projects.ts`
+- **Always** : filtrer `p.published === true` avant d'afficher en production
+- **Never** : importer Prisma, pg, ou toute librairie de base de données — elles ne sont plus dans le projet
+- Pour ajouter un projet : éditer directement `src/data/projects.ts` en dupliquant le modèle existant
+
+```typescript
+// ✅ Seule façon correcte de lire les projets
+import projects from "@/data/projects";
+const published = projects.filter(p => p.published);
+
+// ❌ Interdit — Prisma n'existe plus
+import { prisma } from "@/lib/prisma";
+```
+
+### Ajout d'un projet
+
+Dupliquer l'entrée modèle dans `src/data/projects.ts`. Champs requis : `id` (slug unique), `title`, `preview`, `objectif`, `bilan`, `description`, `published`, `technologies[]`, `functions[]`, `images[]`.
+
+---
+
+## Conventions de code
+
+| Élément | Convention | Exemple |
+|---|---|---|
+| Pages, composants, dossiers | PascalCase | `ProjectDetails/`, `Header.tsx` |
+| Utilitaires, lib, hooks | camelCase | `utils.ts`, `useScrollSpy.ts` |
+| Types / Interfaces | PascalCase | `Project`, `Technology` |
+| Variables, fonctions | camelCase | `handleScroll`, `activeSection` |
+| Path alias | `@/` → `./src/` | `@/data/projects` |
+| Commentaires | Aucun par défaut | Seulement si le WHY n'est pas évident |
+
+---
+
+## Schéma de données (`src/data/projects.ts`)
+
+```typescript
+Project {
+  id: string            // slug unique (ex: "portfolio")
+  title, objectif, preview, bilan, description: string
+  published: boolean
+  technologies: Technology[]  // { id, title, description, icon, postId }
+  functions:    Function[]    // { id, title, description, postId }
+  images:       Image[]       // { id, url, postId }
 }
-
-Technology { id, title, description, icon, postId }
-Function   { id, title, description, postId }
-Image      { id, url, postId }
-~~~
-
-Variable d'environnement requise : `DATABASE_URL` (PostgreSQL connection string).
+// icon → clé lowercase de l'iconMap dans src/app/components/icon/Icon.tsx
+// url  → chemin relatif depuis /public (ex: "assets/images/projet.jpg")
+```
 
 ---
 
-## Conventions & Design System
+## Scripts
 
-### Fichiers, Dossiers et Code
-- Pages et composants : **PascalCase** (`Header.tsx`, `Projets/`, `ProjectDetails/`)
-- Utilitaires et lib : **camelCase** (`prisma.ts`, `createProject.ts`)
-- Composants internes d'un dossier : sous-dossier `__components/`
-- Fonctions et variables : camelCase
-- Types/Interfaces : PascalCase (`ThemeContextType`, `IconItem`)
-- Path alias : `@/` → `./src/`
-
-### Direction Artistique & Styling
-- Tailwind classes inline en priorité. Le CSS doit toujours être en Tailwind CSS.
-- CSS variables globales dans `globals.css` (`--primary-color: #000A1C`, `--bg-color: #111111`).
-- **Thème :** "Modern Dark" exclusif pour le moment. Couleurs dominantes : fond `#111111`, accent indigo, texte blanc.
-- **Profondeur & Cartes :** Privilégie le Glassmorphism pour les surcouches (ex: `bg-white/5 backdrop-blur-md border border-white/10`).
-- **Bordures et espacements :** Utilise des bords arrondis élégants (`rounded-xl` ou `rounded-2xl`) et des espacements aérés (ex: `gap-8` ou `gap-12`).
-- **Typographie :** Utilise une hiérarchie claire. Les titres (h1, h2) doivent être impactants (ex: `font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r`).
-
-### Animations & Interactions
-- Tous les éléments interactifs (boutons, cartes de projet, liens) doivent avoir des micro-interactions au survol (`hover:-translate-y-1`, `hover:shadow-lg`, `hover:border-indigo-500/50`).
-- Utilise systématiquement des transitions douces Tailwind (`transition-all duration-300 ease-in-out`).
-- Les apparitions d'éléments au scroll ou au chargement doivent être fluides (`fade-in`, `slide-up`).
-
-### Règles d'Interface (UX/UI)
-- **Mobile-First :** Développe d'abord pour mobile (`flex-col`), puis ajoute les breakpoints pour desktop (`md:flex-row`).
-- **Accessibilité (a11y) :** Tout code UI généré doit être sémantique (`<nav>`, `<article>`, `<section>`). Les boutons et images doivent avoir des `aria-label` ou `alt` pertinents.
-- **États UI :** Gère systématiquement les états de chargement (Skeletons ou Spinners) et les états vides (ex: "Aucun projet trouvé").
-
----
-
-## Patterns importants
-
-### Server vs Client Components
-- Pages de données (`Projets`, `ProjectDetails`) : **Server Components async** qui fetch via Prisma
-- Composants interactifs : `"use client"` en haut de fichier
-- Composants 3D : chargés avec `dynamic(() => import(...), { ssr: false })` pour éviter les erreurs SSR
-
-### Fetch de données
-~~~typescript
-// Server Component — accès Prisma direct
-const projects = await prisma.post.findMany({
-  where: { published: true },
-  include: { technologies: true, images: true }
-});
-~~~
-
-### Server Action (upload + BDD)
-- `src/lib/createProject.ts` : reçoit un `FormData`, écrit le fichier dans `public/assets/images/`, puis crée le Post via Prisma
-- Les espaces dans les noms de fichiers sont remplacés par des underscores
-
-### Gestion d'état
-- État local : `useState` par composant
-- État global : `ThemeContext` uniquement (léger, pas de Redux/Zustand)
-- Mémoïzation : `useMemo` pour les matériaux Three.js
-
----
-
-## Points d'attention
-
-- **Pas de tests** : aucune infrastructure test (Jest, Vitest, Playwright)
-- **Pas de validation de schéma** : pas de Zod/Yup côté server actions
-- **Pas d'authentification** : la page `/AddProject` n'est pas protégée
-- **Upload fichiers** : stockage local dans `public/assets/images/` — incompatible avec les déploiements serverless sans volume persistant
-- **Pagination** : absente sur la liste des projets
-- **React Compiler** activé dans `next.config.ts` — les annotations de mémoïzation manuelles peuvent être redondantes
+```bash
+npm run dev          # Développement (hot reload)
+npm run build        # Build production
+npm run start        # Serveur production
+npm run typecheck    # tsc --noEmit (obligatoire après chaque modif)
+npm run lint         # ESLint
+```
 
 ---
 
 ## Déploiement
 
-- Plateforme cible probable : **Vercel** (Next.js natif)
-- Requiert une base PostgreSQL externe (Railway, Supabase, Neon, etc.)
-- Variable d'environnement obligatoire : `DATABASE_URL`
-- Adapter Prisma : `@prisma/adapter-pg` (non-edge, engine classique)
-
----
-
-## Spécificités & Règles de comportement pour Claude
-
-- Tu es un expert en design graphique, spécialisé dans les portfolios pour les développeurs/étudiants sortant de formation. Tu mets en avant les capacités UX/UI acquises tout en garantissant une maintenabilité et une propreté de code irréprochables.
-- Il doit y avoir une cohérence parfaite entre chaque composant et une direction graphique unifiée sur tout le site web.
-- Tu as tous les droits de modifier tous les fichiers présents dans le projet, hormis le `.env`.
-- **RÈGLE MCP OBLIGATOIRE :** Avant chaque développement UI, tu dois obligatoirement utiliser l'outil Context7 pour consulter la documentation officielle de la version actuelle de Next.js ainsi que de **shadcn/ui**. Ne commence à coder qu'après avoir validé les syntaxes.
-- Utilise la librairie **shadcn/ui** pour créer les composants (boutons, modales, etc.). Pour ajouter un composant, utilise de préférence la commande `npx shadcn@latest add [composant]`.
-- Après chaque génération de code, tu devras **obligatoirement** lancer le script `npm run typecheck` et corriger les erreurs s'il y en a.
+- Plateforme : **Vercel**
+- Aucune variable d'environnement requise — le projet est 100% statique côté données
+- Images uploadées : chemins relatifs depuis `/public/assets/images/`

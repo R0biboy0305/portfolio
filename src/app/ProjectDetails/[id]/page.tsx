@@ -1,78 +1,61 @@
-import {prisma} from "@/lib/prisma";
 import Image from "next/image";
-import IconTech from "@/app/components/icon/Icon";
 import React from "react";
 import ImageSlider from "@/app/components/ImageSlider/ImageSlider";
 import TechFuncSlider from "@/app/components/TechFuncSlider/TechFuncSlider";
-import Link from "next/link";
-import {ArrowLeft} from "lucide-react";
 import { notFound } from "next/navigation";
+import BackButton from "@/components/ui/BackButton";
+import projects from "@/data/projects";
 
-export default async function ProjectDetails({params}: { params: { id: string } }) {
+export default async function ProjectDetails({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const project = projects.find((p) => p.id === id);
 
-    const resolvedParams = await params;
-    const projectId = resolvedParams.id;
-
-
-    const project = await prisma.post.findUnique({
-        where: {
-            id: projectId
-        },
-        include: {
-            technologies: true,
-            functions: true,
-            images: true
-        }
-    })
-
-    if(!project){
-        return notFound();
-    }
-
-    const safeProject = project!;
+    if (!project) return notFound();
 
     return (
-       <div className="text-white flex flex-col gap-20 max-w-6xl mx-auto relative">
-           <div
-               className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-300 -z-10 rounded-full bg-radial-[at_50%_50%] from-indigo-800/50 to-transparent to-70%">
-           </div>
-           <Link href={"/Projets"}
-                 className="group flex gap-2 items-center px-4 py-2 bg-white/40 w-fit rounded-lg text-white font-light transition-all">
-           <div
-               className="w-0 overflow-hidden transition-all duration-200 group-hover:w-5 flex items-center justify-center">
-               <ArrowLeft size={20} className="shrink-0"/>
-           </div>
-           <span>Retour</span>
-       </Link>
-           <h1 className="text-8xl font-bold italic text-center text-transparent [-webkit-text-stroke:2px_white]">{safeProject.title}</h1>
-           <div className="w-full h-[1px] bg-white"></div>
-           <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto max-h-fit">
-               <div className="justify-self-start">
-                    <ImageSlider images={safeProject.images.slice(0,2)}/>
-               </div>
-               <div className="space-y-4 justify-self-end">
-                   <h2 className="font-bold text-6xl">Présentation</h2>
-                   <p className="text-sm w-sm">{safeProject.preview}</p>
-               </div>
-           </div>
-           <div className="w-full h-[1px] bg-white"></div>
-           <div className="grid grid-cols-2 gap-8 max-w-6xl mx-auto">
-               <div className="space-y-4">
-                   <h2 className="font-bold text-6xl">Objectifs</h2>
-                   <p className="text-sm w-sm">{safeProject.objectif}</p>
-               </div>
-               <div className="justify-self-end h-fit">
-                   <ImageSlider images={safeProject.images.slice(2)}/>
-               </div>
-           </div>
-           <div className="w-full h-[1px] bg-white"></div>
-           <TechFuncSlider technologies={safeProject.technologies} functions={safeProject.functions}/>
-           <div className="w-full h-[1px] bg-white"></div>
-           <div className="space-y-4">
-               <h2 className="font-bold text-6xl">Bilan</h2>
-               <p className="text-sm w-sm">{safeProject.bilan}</p>
-           </div>
-           <div className="w-full h-[1px] bg-white"></div>
-       </div>
-    )
+        <div className="text-white flex flex-col gap-20 max-w-6xl mx-auto px-6 py-12 relative">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] -z-10 rounded-full bg-radial-[at_50%_50%] from-indigo-900/30 to-transparent to-70% pointer-events-none" />
+
+            <BackButton />
+
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-white/30 text-center">
+                {project.title}
+            </h1>
+
+            <div className="w-full h-[1px] bg-white/10" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <ImageSlider images={project.images.slice(0, 2)} />
+                <div className="space-y-4">
+                    <h2 className="font-bold text-4xl md:text-5xl tracking-tight">Présentation</h2>
+                    <p className="text-white/60 text-sm leading-relaxed max-w-sm">{project.preview}</p>
+                </div>
+            </div>
+
+            <div className="w-full h-[1px] bg-white/10" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="space-y-4">
+                    <h2 className="font-bold text-4xl md:text-5xl tracking-tight">Objectifs</h2>
+                    <p className="text-white/60 text-sm leading-relaxed max-w-sm">{project.objectif}</p>
+                </div>
+                <div className="justify-self-end w-full">
+                    <ImageSlider images={project.images.slice(2)} />
+                </div>
+            </div>
+
+            <div className="w-full h-[1px] bg-white/10" />
+
+            <TechFuncSlider technologies={project.technologies} functions={project.functions} />
+
+            <div className="w-full h-[1px] bg-white/10" />
+
+            <div className="space-y-4">
+                <h2 className="font-bold text-4xl md:text-5xl tracking-tight">Bilan</h2>
+                <p className="text-white/60 text-sm leading-relaxed max-w-2xl">{project.bilan}</p>
+            </div>
+
+            <div className="w-full h-[1px] bg-white/10" />
+        </div>
+    );
 }
