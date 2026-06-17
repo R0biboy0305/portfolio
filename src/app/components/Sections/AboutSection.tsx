@@ -41,6 +41,7 @@ export default function AboutSection() {
                                 src="/assets/images/pdp400x400.jpg"
                                 alt="Photo de profil de Robin Bergmann"
                                 fill
+                                sizes="144px"
                                 className="object-cover"
                             />
                         </div>

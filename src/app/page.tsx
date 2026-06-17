@@ -8,10 +8,10 @@ export default function Home() {
             <section id="hero">
                 <HeroSection />
             </section>
-            <section id="projets" className="scroll-mt-32">
+            <section id="projets" className="scroll-mt-4">
                 <ProjectsSection />
             </section>
-            <section id="about" className="scroll-mt-32">
+            <section id="about" className="scroll-mt-4">
                 <AboutSection />
             </section>
         </>
