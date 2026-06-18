@@ -28,8 +28,8 @@ body {
 }
 
 :root {
-    --primary-color: #000A1C;
-    --bg-color: #111111;
+    --primary-color: #3730a3;
+    --bg-color: #f8f9ff;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
@@ -135,6 +135,8 @@ body {
 }
 
 .dark {
+    --bg-color: #111111;
+    --primary-color: #000A1C;
     --background: oklch(0.145 0 0);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.205 0 0);

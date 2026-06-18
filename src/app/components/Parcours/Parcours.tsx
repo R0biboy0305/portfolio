@@ -46,38 +46,46 @@ const parcoursData = [
 export default function Parcours() {
     return (
         <div className="flex flex-col gap-0">
-            <div className="relative pl-6 border-l border-white/10">
+            {/* border-black/20 = trait de timeline visible en light */}
+            <div className="relative pl-6 border-l border-black/20 dark:border-white/15">
                 {parcoursData.map((item, index) => (
                     <div
                         key={item.id}
                         className={`relative pb-8 ${index === parcoursData.length - 1 ? "pb-0" : ""}`}
                     >
-                        {/* Timeline dot */}
                         <div
                             className={`absolute left-0 top-1 -translate-x-1/2 w-3 h-3 rounded-full border-2 transition-colors ${
                                 item.highlight
                                     ? "bg-indigo-500 border-indigo-400/50 shadow-sm shadow-indigo-500/50"
-                                    : "bg-white/20 border-white/10"
+                                    : "bg-gray-400 dark:bg-white/30 border-black/20 dark:border-white/15"
                             }`}
                         />
 
                         <div className="flex flex-col gap-2 ml-4">
-                            <span
-                                className={`text-xs font-medium ${
-                                    item.highlight ? "text-indigo-400" : "text-white/40"
-                                }`}
-                            >
+                            {/* date : gray-600 = ~6.6:1 | white/60 = ~5.1:1 */}
+                            <span className={`text-xs font-medium ${
+                                item.highlight
+                                    ? "text-indigo-600 dark:text-indigo-400"
+                                    : "text-gray-600 dark:text-white/60"
+                            }`}>
                                 {item.date}
                             </span>
-                            <h4
-                                className={`font-semibold text-sm ${
-                                    item.highlight ? "text-white" : "text-white/80"
-                                }`}
-                            >
+                            {/* titre : gray-800 = ~11:1 | white/85 = ~7:1 */}
+                            <h4 className={`font-semibold text-sm ${
+                                item.highlight
+                                    ? "text-gray-900 dark:text-white"
+                                    : "text-gray-800 dark:text-white/85"
+                            }`}>
                                 {item.title}
                             </h4>
-                            <p className="text-white/50 text-xs leading-relaxed">{item.description}</p>
-                            <p className={`text-xs italic ${item.highlight ? "text-indigo-400/60" : "text-white/30"}`}>
+                            {/* description : gray-700 = ~9.5:1 | white/70 = ~6:1 */}
+                            <p className="text-gray-700 dark:text-white/70 text-xs leading-relaxed">{item.description}</p>
+                            {/* localisation : gray-600 = ~6.6:1 | white/55 = ~4.6:1 */}
+                            <p className={`text-xs italic ${
+                                item.highlight
+                                    ? "text-indigo-600/70 dark:text-indigo-400/60"
+                                    : "text-gray-600 dark:text-white/55"
+                            }`}>
                                 {item.location}
                             </p>
                         </div>

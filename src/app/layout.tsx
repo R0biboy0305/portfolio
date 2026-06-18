@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/app/components/Header/Header";
 import Footer from "@/app/components/Footer/Footer";
 import LayoutClientShell from "@/app/components/Layout/LayoutClientShell";
+import { ThemeProvider } from "@/app/components/providers/ThemeProvider";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
 
@@ -15,13 +16,15 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="fr" className={cn(poppins.variable, "font-sans")}>
-        <body className="bg-first-color flex flex-col">
-            <Header />
-            <main className="relative flex-1 min-h-screen pt-24">
-                <LayoutClientShell>{children}</LayoutClientShell>
-            </main>
-            <Footer />
+        <html lang="fr" className={cn(poppins.variable, "font-sans")} suppressHydrationWarning>
+        <body className="bg-first-color flex flex-col transition-colors duration-300">
+            <ThemeProvider>
+                <Header />
+                <main className="relative flex-1 min-h-screen pt-24">
+                    <LayoutClientShell>{children}</LayoutClientShell>
+                </main>
+                <Footer />
+            </ThemeProvider>
         </body>
         </html>
     );

@@ -39,16 +39,17 @@ const techTools: Category[] = [
             { nameKey: "Git",      label: "Git" },
             { nameKey: "Firebase", label: "Firebase" },
             { nameKey: "Docker",   label: "Docker" },
+            { nameKey: "Claude",   label: "Claude" },
         ],
     },
 ];
 
 function CategoryCard({ category }: { category: Category }) {
     return (
-        <div className="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-indigo-500/20 hover:bg-white/[0.05] transition-all duration-300">
+        <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 hover:bg-black/[0.11] dark:hover:bg-white/[0.07] transition-all duration-300">
             <div className="flex items-center gap-2 mb-5">
-                <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
-                <p className="text-white font-semibold text-sm tracking-wide">{category.name}</p>
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400" />
+                <p className="text-gray-900 dark:text-white font-semibold text-sm tracking-wide">{category.name}</p>
             </div>
             <div className="grid grid-cols-4 gap-4">
                 {category.icons.map((icon) => (
@@ -56,10 +57,10 @@ function CategoryCard({ category }: { category: Category }) {
                         key={icon.nameKey}
                         className="flex flex-col items-center gap-2 group cursor-default"
                     >
-                        <div className="p-2.5 rounded-xl bg-white/5 border border-white/10 group-hover:border-indigo-500/30 group-hover:bg-white/10 transition-all duration-200">
-                            <IconTech nameKey={icon.nameKey} size={32} color={"white"}/>
+                        <div className="p-2.5 rounded-xl bg-black/[0.08] dark:bg-white/[0.08] border border-black/15 dark:border-white/10 group-hover:border-indigo-500/40 group-hover:bg-black/[0.13] dark:group-hover:bg-white/[0.13] transition-all duration-200 text-gray-800 dark:text-white">
+                            <IconTech nameKey={icon.nameKey} size={32} />
                         </div>
-                        <span className="text-[10px] text-white/40 group-hover:text-white/70 transition-colors text-center leading-tight">
+                        <span className="text-[10px] text-gray-600 dark:text-white/55 group-hover:text-gray-900 dark:group-hover:text-white/80 transition-colors text-center leading-tight">
                             {icon.label}
                         </span>
                     </div>
@@ -77,9 +78,9 @@ export default function TechStack() {
                     <CategoryCard key={cat.name} category={cat} />
                 ))}
             </div>
-            {techTools.map((cat) => (
-                <CategoryCard key={cat.name} category={cat} />
-            ))}
+                {techTools.map((cat) => (
+                    <CategoryCard key={cat.name} category={cat} />
+                ))}
         </div>
     );
 }

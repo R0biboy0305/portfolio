@@ -2,10 +2,26 @@
 import Globe from "react-globe.gl";
 import { useEffect, useRef, useState, useMemo } from "react";
 import * as THREE from "three";
+import { useTheme } from "next-themes";
 
 export default function CustomGlobe() {
     const globeRef = useRef<any>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
     const [features, setFeatures] = useState<object[]>([]);
+    const [size, setSize] = useState(1000);
+    const { resolvedTheme } = useTheme();
+    const isLight = resolvedTheme === "light";
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        const observer = new ResizeObserver(([entry]) => {
+            const { width, height } = entry.contentRect;
+            setSize(Math.min(width, height));
+        });
+        observer.observe(container);
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         const load = () =>
@@ -42,24 +58,26 @@ export default function CustomGlobe() {
     const customMaterial = useMemo(
         () =>
             new THREE.MeshBasicMaterial({
-                color: "#0a0a0a",
+                color: isLight ? "#e8eeff" : "#0a0a0a",
                 transparent: true,
                 opacity: 1,
             }),
-        []
+        [isLight]
     );
 
     return (
-        <div className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative">
+        <div ref={containerRef} className="overflow-hidden hidden lg:w-1/2 h-screen lg:flex justify-center items-center cursor-grab relative">
             <Globe
                 ref={globeRef}
+                width={size}
+                height={size}
                 backgroundColor="rgba(255, 255, 255, 0)"
                 globeMaterial={customMaterial}
                 polygonsData={features}
                 polygonAltitude={0.03}
-                polygonCapColor={() => "rgba(255, 255, 255, 0.2)"}
-                polygonSideColor={() => "rgba(255, 255, 255, 0.02)"}
-                polygonStrokeColor={() => "rgba(255, 255, 255, 0.6)"}
+                polygonCapColor={() => isLight ? "rgba(79, 70, 229, 0.12)" : "rgba(255, 255, 255, 0.2)"}
+                polygonSideColor={() => isLight ? "rgba(79, 70, 229, 0.05)" : "rgba(255, 255, 255, 0.02)"}
+                polygonStrokeColor={() => isLight ? "rgba(79, 70, 229, 0.4)" : "rgba(255, 255, 255, 0.6)"}
                 animateIn={true}
             />
         </div>

@@ -15,7 +15,7 @@ export default function ImageSlider({ images }: { images: ProjectImage[] }) {
 
     return (
         <div className="flex flex-col items-center gap-3 w-full">
-            <div className="relative w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 backdrop-blur-md">
+            <div className="relative w-full rounded-2xl overflow-hidden bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-md">
                 <div className="relative aspect-[16/9]">
                     <Image
                         src={`/${images[currentIndex].url}`}
@@ -55,8 +55,8 @@ export default function ImageSlider({ images }: { images: ProjectImage[] }) {
                             aria-label={`Aller à l'image ${index + 1}`}
                             className={`rounded-full transition-all duration-300 ${
                                 currentIndex === index
-                                    ? "bg-white w-6 h-2"
-                                    : "bg-white/20 w-2 h-2 hover:bg-white/40"
+                                    ? "bg-gray-900 dark:bg-white w-6 h-2"
+                                    : "bg-black/20 dark:bg-white/20 w-2 h-2 hover:bg-black/40 dark:hover:bg-white/40"
                             }`}
                         />
                     ))}
