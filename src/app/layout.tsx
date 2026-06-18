@@ -1,7 +1,7 @@
 import React from "react";
 import "./globals.css";
 import Header from "@/app/components/Header/Header";
-import Footer from "@/app/components/footer/Footer";
+import Footer from "@/app/components/Footer/Footer";
 import LayoutClientShell from "@/app/components/Layout/LayoutClientShell";
 import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
