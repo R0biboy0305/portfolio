@@ -16,11 +16,11 @@ const poppins = Poppins({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="fr" className={cn(poppins.variable, "font-sans")} suppressHydrationWarning>
-        <body className="bg-first-color flex flex-col transition-colors duration-300 overflow-x-hidden">
+        <html lang="fr" className={cn(poppins.variable, "font-sans overflow-x-hidden")} suppressHydrationWarning>
+        <body className="bg-first-color flex flex-col transition-colors duration-300 overflow-x-hidden w-full max-w-full">
             <ThemeProvider>
                 <Header />
-                <main className="relative flex-1 min-h-screen pt-24">
+                <main className="relative flex-1 min-h-screen pt-24 overflow-x-hidden">
                     <LayoutClientShell>{children}</LayoutClientShell>
                 </main>
                 <Footer />
