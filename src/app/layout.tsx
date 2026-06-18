@@ -17,7 +17,7 @@ const poppins = Poppins({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="fr" className={cn(poppins.variable, "font-sans")} suppressHydrationWarning>
-        <body className="bg-first-color flex flex-col transition-colors duration-300">
+        <body className="bg-first-color flex flex-col transition-colors duration-300 overflow-x-hidden">
             <ThemeProvider>
                 <Header />
                 <main className="relative flex-1 min-h-screen pt-24">
