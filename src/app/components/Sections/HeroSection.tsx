@@ -14,7 +14,7 @@ const GlobeDynamic = dynamic(() => import("@/app/components/Globe/Globe"), {
 
 export default function HeroSection() {
     return (
-        <div className="flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto w-full min-h-[calc(100vh-8rem)] gap-8 py-12 px-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto w-full min-h-[calc(100vh-8rem)] gap-8 py-16 sm:py-12 px-5 sm:px-6">
             <HomePageLayout />
             <GlobeDynamic />
         </div>

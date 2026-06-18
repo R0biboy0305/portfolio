@@ -4,7 +4,7 @@ import { Github, Linkedin } from "lucide-react";
 export default function Footer() {
     return (
         <footer className="flex flex-col gap-4 w-full items-center py-8 border-t border-black/15 dark:border-white/10">
-            <div className="flex flex-row justify-between items-center w-full max-w-lg px-6">
+            <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0 w-full max-w-lg px-6">
                 <div className="flex flex-row gap-6">
                     {/* gray-600 = ~6.6:1 | white/60 = ~5.1:1 */}
                     <Link href="#hero"    className="text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white transition-colors duration-200 text-sm">Accueil</Link>

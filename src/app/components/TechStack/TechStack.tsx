@@ -51,7 +51,7 @@ function CategoryCard({ category }: { category: Category }) {
                 <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 dark:bg-indigo-400" />
                 <p className="text-gray-900 dark:text-white font-semibold text-sm tracking-wide">{category.name}</p>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4">
                 {category.icons.map((icon) => (
                     <div
                         key={icon.nameKey}

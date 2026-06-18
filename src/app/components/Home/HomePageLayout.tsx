@@ -24,7 +24,7 @@ export default function HomePageLayout() {
                     Développeur back-end en alternance
                 </span>
 
-                <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.05]">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-gray-900 dark:text-white leading-[1.05]">
                     Robin
                     <br />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-indigo-500 to-indigo-400 dark:from-white dark:via-indigo-200 dark:to-indigo-400">
@@ -67,7 +67,7 @@ export default function HomePageLayout() {
             </div>
 
             {/* gray-500 = #6b7280, contraste ~4.4:1 — hover gray-800 ~11:1 */}
-            <div className="flex items-center gap-5 pt-4 border-t border-black/15 dark:border-white/10">
+            <div className="flex items-center gap-3 sm:gap-5 pt-4 border-t border-black/15 dark:border-white/10 flex-wrap">
                 {mainTech.map((tech) => (
                     <div
                         key={tech.nameKey}

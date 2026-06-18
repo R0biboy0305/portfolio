@@ -10,14 +10,14 @@ import { Project } from "@/app/data/projects";
 
 export default function ProjetsList({ initialProjects }: { initialProjects: Project[] }) {
     return (
-        <div className="text-gray-900 dark:text-white flex flex-col gap-16 max-w-6xl mx-auto py-24 px-6 relative">
+        <div className="text-gray-900 dark:text-white flex flex-col gap-10 sm:gap-12 md:gap-16 max-w-6xl mx-auto py-24 px-6 relative">
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] -z-10 rounded-full bg-radial-[at_50%_50%] from-indigo-200/50 dark:from-indigo-900/30 to-transparent to-70% pointer-events-none" />
 
             <AnimatedSection>
                 <div className="flex flex-col gap-3">
                     <span className="text-indigo-600 dark:text-indigo-400 text-xs font-medium tracking-widest uppercase">Portfolio</span>
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
+                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
                         Projets
                     </h2>
                     <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent mt-2" />

@@ -19,14 +19,14 @@ export default function AboutSection() {
     const sections = [<TechStack key="tech" />, <Parcours key="parcours" />, <Formation key="formation" />];
 
     return (
-        <div className="max-w-6xl mx-auto flex flex-col gap-16 px-6 py-24 relative">
+        <div className="max-w-6xl mx-auto flex flex-col gap-10 sm:gap-12 md:gap-16 px-6 py-24 relative">
 
             <div className="absolute top-0 right-0 w-[500px] h-[500px] -z-10 rounded-full bg-radial-[at_80%_20%] from-indigo-200/50 dark:from-indigo-900/20 to-transparent to-70% pointer-events-none" />
 
             <AnimatedSection>
                 <div className="flex flex-col gap-3">
                     <span className="text-indigo-600 dark:text-indigo-400 text-xs font-medium tracking-widest uppercase">À propos</span>
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
+                    <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
                         Profil
                     </h2>
                     <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent mt-2" />
@@ -34,7 +34,7 @@ export default function AboutSection() {
             </AnimatedSection>
 
             <AnimatedSection delay={100}>
-                <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-5 sm:p-6 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
                     <div className="shrink-0">
                         <div className="relative w-36 h-36 rounded-full overflow-hidden ring-2 ring-black/15 dark:ring-white/10 ring-offset-2 ring-offset-transparent">
                             <Image
@@ -76,7 +76,7 @@ export default function AboutSection() {
                             </button>
                         ))}
                     </div>
-                    <div className="min-h-[400px]">
+                    <div className="min-h-0 sm:min-h-[400px]">
                         {sections[step]}
                     </div>
                 </div>
