@@ -5,7 +5,7 @@ import NavButton from "@/app/components/Header/__components/NavButton/NavButton"
 import { HomeIcon, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
-const SECTIONS = ["hero", "projets", "about"] as const;
+const SECTIONS = ["hero", "projets", "about", "contact"] as const;
 type SectionId = typeof SECTIONS[number];
 
 export default function Header() {
@@ -35,11 +35,12 @@ export default function Header() {
     return (
         <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
             <nav className="flex items-center gap-1 px-3 py-2 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 shadow-lg shadow-black/10 dark:shadow-black/20">
-                <NavButton href="#hero" isActive={activeSection === "hero"}>
+                <NavButton href="/#hero" isActive={activeSection === "hero"}>
                     <HomeIcon size={15} />
                 </NavButton>
-                <NavButton href="#projets" isActive={activeSection === "projets"}>Projets</NavButton>
-                <NavButton href="#about" isActive={activeSection === "about"}>À propos</NavButton>
+                <NavButton href="/#projets" isActive={activeSection === "projets"}>Projets</NavButton>
+                <NavButton href="/#about" isActive={activeSection === "about"}>À propos</NavButton>
+                <NavButton href="/#contact" isActive={activeSection === "contact"}>Contact</NavButton>
 
                 <div className="w-px h-4 bg-black/10 dark:bg-white/10 mx-1" />
 

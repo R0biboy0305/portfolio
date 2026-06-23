@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Github, Linkedin, ArrowRight } from "lucide-react";
+import { Github, Linkedin, ArrowRight, Download } from "lucide-react";
 import IconTech from "@/app/components/Icon/Icon";
 
 const mainTech = [
@@ -64,6 +64,13 @@ export default function HomePageLayout() {
                 >
                     <Linkedin size={16} /> LinkedIn
                 </Link>
+                <a
+                    href="/assets/CV/CV_BERGMANN_Robin.pdf"
+                    download
+                    className="group flex items-center gap-2 px-6 py-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 border border-black/15 dark:border-white/10 hover:border-black/25 dark:hover:border-white/20 text-gray-900 dark:text-white rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5"
+                >
+                    <Download size={16} className="transition-transform duration-300 group-hover:-translate-y-0.5" /> CV
+                </a>
             </div>
 
             {/* gray-500 = #6b7280, contraste ~4.4:1 — hover gray-800 ~11:1 */}
