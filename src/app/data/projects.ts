@@ -85,118 +85,153 @@ const projects: Project[] = [
     },
 
     {
-        id: "budgettracker",
-        title: "BudgetTracker",
-        objectif: "Concevoir une application mobile cross-platform permettant aux utilisateurs de suivre leurs dépenses quotidiennes, de définir des budgets mensuels par catégorie et de visualiser leurs habitudes financières via des graphiques interactifs.",
-        preview: "Application Flutter de suivi budgétaire personnel. L'utilisateur renseigne ses dépenses, les catégorise et visualise en temps réel l'évolution de son budget via des graphiques dynamiques. Les données sont synchronisées via Firebase Firestore.",
-        bilan: "Ce projet m'a permis d'approfondir Flutter et la gestion d'état avec Riverpod. L'intégration Firebase Firestore en temps réel a été un challenge intéressant, notamment pour la gestion des conflits de synchronisation offline/online.",
-        description: "Application mobile Flutter avec Firebase pour la gestion budgétaire personnelle.",
+        id: "portfolio",
+        title: "Portfolio",
+        objectif:
+            "Concevoir un portfolio de développeur moderne, immersif et performant, mettant l'accent sur l'expérience utilisateur à travers des micro-interactions soignées, un design glassmorphism cohérent et une navigation fluide. L'objectif était de créer un site qui reflète mes compétences techniques tout en offrant une expérience visuelle mémorable.",
+        preview:
+            "Portfolio Next.js 15 avec design glassmorphism, globe 3D interactif et animations au scroll. Chaque section est pensée pour guider le visiteur à travers mon parcours avec fluidité : hero immersif, grille de projets filtrable, timeline interactive et détails de projet avec slider d'images. Le responsive est optimisé pour chaque breakpoint, de 320px aux écrans ultra-larges.",
+        bilan:
+            "Ce projet m'a permis de pousser l'UX au-delà du simple affichage d'informations. Le travail sur les animations d'entrée décalées, le scroll spy du header, le glassmorphism unifié et le globe 3D en arrière-plan a été particulièrement formateur. L'intégration de Three.js via react-three/fiber et react-globe.gl dans un contexte SSR Next.js a été le défi technique le plus stimulant, résolu grâce au chargement dynamique sans SSR.",
+        description:
+            "Portfolio personnel développé avec Next.js 15 (App Router), React 19, TypeScript strict, Tailwind CSS v4, shadcn/ui, Three.js et react-globe.gl. Architecture full Server Components avec hydratation sélective.",
         published: true,
         technologies: [
-            {id: "t1", title: "Flutter", icon: "flutter", description: "Framework cross-platform pour iOS et Android avec une seule base de code Dart.", postId: "budgettracker"},
-            {id: "t2", title: "Firebase", icon: "firebase", description: "Backend as a Service : Firestore pour la BDD temps réel, Auth pour l'authentification.", postId: "budgettracker"},
-            {id: "t3", title: "Dart", icon: "dart", description: "Langage typé orienté objet, compilé nativement pour des performances mobiles optimales.", postId: "budgettracker"},
+            {
+                id: "t1",
+                title: "Next.js",
+                icon: "next",
+                description: "App Router avec Server Components pour un rendu hybride performant. Le routage dynamique gère les pages de détails de projets en SSR, tandis que le layout racine encapsule Header, Footer et police Poppins.",
+                postId: "portfolio"
+            },
+            {
+                id: "t2",
+                title: "React",
+                icon: "react",
+                description: "React 19 pour les composants interactifs : scroll spy du header, IntersectionObserver pour les animations au scroll, gestion d'état locale pour le slider d'images et les onglets de compétences.",
+                postId: "portfolio"
+            },
+            {
+                id: "t3",
+                title: "TypeScript",
+                icon: "typescript",
+                description: "Typage strict de bout en bout : interfaces Project, Technology, Function et Image, garantissant la cohérence des données et l'autocomplétion dans tout le codebase.",
+                postId: "portfolio"
+            },
+            {
+                id: "t4",
+                title: "Tailwind CSS",
+                icon: "tailwind",
+                description: "Tailwind CSS v4 pour un design system glassmorphism cohérent. Classes utilitaires personnalisées, responsive optimisé pour mobile (320px–428px) et purge automatique en production.",
+                postId: "portfolio"
+            },
         ],
         functions: [
-            {id: "f1", title: "Tableau de bord budgétaire", description: "Vue synthétique du mois en cours : dépenses par catégorie, budget restant, progression vers les objectifs.", postId: "budgettracker"},
-            {id: "f2", title: "Ajout de dépenses rapide", description: "Interface simplifiée pour saisir une dépense en moins de 3 taps, avec catégorisation automatique par IA.", postId: "budgettracker"},
+            {
+                id: "f1",
+                title: "Globe 3D interactif",
+                description: "Globe terrestre rendu avec react-globe.gl en arrière-plan du hero, chargé dynamiquement sans SSR pour éviter les erreurs d'hydratation. Rotation automatique et interaction au survol.",
+                postId: "portfolio"
+            },
+            {
+                id: "f2",
+                title: "Animations au scroll",
+                description: "Chaque section apparaît avec une animation fade-in + translate pilotée par IntersectionObserver via le composant AnimatedSection. Les éléments de liste sont décalés avec un délai progressif.",
+                postId: "portfolio"
+            },
+            {
+                id: "f3",
+                title: "Scroll spy et navigation fluide",
+                description: "Le header détecte automatiquement la section visible et met en surbrillance le lien correspondant. Le clic sur un lien déclenche un scroll smooth vers la section cible.",
+                postId: "portfolio"
+            },
+            {
+                id: "f4",
+                title: "Slider d'images glassmorphism",
+                description: "Carrousel d'images avec navigation par flèches, indicateurs de position et design glassmorphism unifié. Transitions fluides entre les slides.",
+                postId: "portfolio"
+            },
+            {
+                id: "f5",
+                title: "Responsive design pixel-perfect",
+                description: "Adaptation fine pour chaque palier d'écran, de 320px à l'ultra-large. Breakpoints Tailwind personnalisés, grille de projets passant de 1 à 3 colonnes, typographie fluide, conteneurs à overflow contraint et header adaptatif. Chaque composant a été testé sur mobile, tablette et desktop pour garantir une expérience sans scroll horizontal ni débordement.",
+                postId: "portfolio"
+            },
         ],
         images: [
-            {id: "i1", url: "assets/images/p1/p1-1.png", postId: "budgettracker"},
-            {id: "i2", url: "assets/images/p1/p1-2.png", postId: "budgettracker"},
+            {id: "i1", url: "assets/images/p2/p2-1.png", postId: "portfolio"},
+            {id: "i2", url: "assets/images/p2/p2-3.png", postId: "portfolio"},
+            {id: "i3", url: "assets/images/p2/p2-2.png", postId: "portfolio"},
+            {id: "i4", url: "assets/images/p2/p2-4.png", postId: "portfolio"},
         ],
     },
 
     {
-        id: "ecoshop",
-        title: "EcoShop",
-        objectif: "Développer une marketplace e-commerce spécialisée dans les produits éco-responsables, avec un système de notation environnementale pour chaque produit, un panier multi-vendeurs et un back-office complet pour les marchands.",
-        preview: "Marketplace Laravel/Vue.js dédiée aux produits éco-responsables. Chaque article affiche un score environnemental calculé sur la chaîne de production. Le back-office vendor permet la gestion des stocks, commandes et statistiques de vente en temps réel.",
-        bilan: "Projet ambitieux qui m'a confronté aux défis des architectures multi-tenant. La conception du système de scoring environnemental a nécessité une modélisation de données complexe. Laravel Sanctum pour l'auth API a simplifié l'intégration avec Vue.js.",
-        description: "Marketplace e-commerce éco-responsable construite avec Laravel et Vue.js.",
+        id: "ia-generative",
+        title: "IA Générative & Claude Code",
+        objectif:
+            "Démontrer ma maîtrise de l'IA générative comme outil de productivité avancé dans le développement logiciel. Au-delà de la simple utilisation de prompts, il s'agit de montrer comment j'orchestre des agents IA, configure des environnements de travail structurés et intègre l'IA dans un workflow professionnel reproductible.",
+        preview:
+            "Exploration approfondie de l'écosystème Claude Code : création de fichiers CLAUDE.md pour piloter le comportement de l'IA, configuration de Skills et d'agents spécialisés, orchestration de Teams multi-agents pour des tâches complexes, et utilisation de MCP servers pour étendre les capacités de l'IA. Ce projet illustre une approche méthodique de l'IA-assisted development.",
+        bilan:
+            "L'IA générative ne remplace pas le développeur, elle amplifie ses capacités. En structurant l'interaction via des CLAUDE.md détaillés, des Skills ciblés et des agents spécialisés, j'ai considérablement accéléré mon workflow tout en maintenant un contrôle total sur la qualité du code produit. La clé réside dans la capacité à donner un contexte riche et structuré à l'IA — ce qui exige une compréhension fine de l'architecture, du design system et des conventions du projet.",
+        description:
+            "Maîtrise de l'IA générative appliquée au développement logiciel, avec Claude Code comme outil principal d'orchestration et de productivité.",
         published: true,
         technologies: [
-            {id: "t1", title: "Laravel", icon: "laravel", description: "Framework PHP MVC pour l'API REST, l'authentification Sanctum et la gestion des queues.", postId: "ecoshop"},
-            {id: "t2", title: "Vue.js", icon: "vue", description: "SPA frontend avec Pinia pour la gestion d'état et Vue Router pour la navigation.", postId: "ecoshop"},
-            {id: "t3", title: "MySQL", icon: "mysql", description: "Base de données relationnelle pour la gestion des produits, commandes et vendeurs.", postId: "ecoshop"},
-            {id: "t4", title: "PHP", icon: "php", description: "Back-end solide avec PHP 8.2, typage strict et architecture hexagonale.", postId: "ecoshop"},
+            {
+                id: "t1",
+                title: "Claude",
+                icon: "claude",
+                description: "Claude Code comme assistant de développement principal : génération de code, refactoring, debugging, revue de code et exploration de codebase. Utilisation avancée des modèles Sonnet, Opus et Haiku selon la complexité des tâches.",
+                postId: "ia-generative"
+            },
+            {
+                id: "t2",
+                title: "TypeScript",
+                icon: "typescript",
+                description: "TypeScript strict comme langage principal des projets pilotés par IA, permettant à Claude de bénéficier du typage pour produire du code plus fiable et cohérent avec l'existant.",
+                postId: "ia-generative"
+            },
+            {
+                id: "t3",
+                title: "Next.js",
+                icon: "next",
+                description: "Framework principal des projets développés avec l'assistance IA. La documentation Next.js est systématiquement consultée via Context7 MCP avant chaque implémentation.",
+                postId: "ia-generative"
+            },
         ],
         functions: [
-            {id: "f1", title: "Score environnemental", description: "Algorithme de calcul du score éco basé sur l'origine, le transport, l'emballage et la durée de vie du produit.", postId: "ecoshop"},
-            {id: "f2", title: "Back-office vendeur", description: "Dashboard complet : gestion des stocks, suivi des commandes, statistiques de vente et exports CSV.", postId: "ecoshop"},
+            {
+                id: "f1",
+                title: "CLAUDE.md — Pilotage contextuel",
+                description: "Rédaction de fichiers CLAUDE.md détaillés définissant le rôle de l'IA, le design system, les conventions de code, les règles architecturales et les scripts disponibles. Ce contexte structuré garantit des réponses cohérentes et alignées avec le projet.",
+                postId: "ia-generative"
+            },
+            {
+                id: "f2",
+                title: "Skills & Agents spécialisés",
+                description: "Configuration de Skills invocables (/code-review, /simplify, /verify) et d'agents spécialisés (Explore, Plan, websearch) pour déléguer des sous-tâches ciblées : exploration de codebase, planification d'architecture, recherche documentaire.",
+                postId: "ia-generative"
+            },
+            {
+                id: "f3",
+                title: "MCP Servers — Extension des capacités",
+                description: "Intégration de MCP servers (Context7 pour la documentation, Claude-in-Chrome pour l'automatisation navigateur) permettant à l'IA d'accéder à des ressources externes et d'interagir avec des outils au-delà du terminal.",
+                postId: "ia-generative"
+            },
+            {
+                id: "f4",
+                title: "Workflow IA structuré",
+                description: "Méthodologie reproductible : consultation Context7 avant chaque composant UI, typecheck systématique après modification, utilisation de shadcn/ui via CLI, et revue de code automatisée. L'IA s'intègre dans un processus qualité, pas en remplacement.",
+                postId: "ia-generative"
+            },
         ],
         images: [
-            {id: "i1", url: "assets/images/p1/p1-2.png", postId: "ecoshop"},
-            {id: "i2", url: "assets/images/p1/p1-3.png", postId: "ecoshop"},
-        ],
-    },
-
-    {
-        id: "taskflow",
-        title: "TaskFlow",
-        objectif: "Créer un SaaS de gestion de projets en mode Kanban inspiré de Trello, avec des fonctionnalités de collaboration temps réel, de gestion des rôles par workspace et d'automatisation des workflows via des règles configurables.",
-        preview: "SaaS Kanban Next.js avec collaboration temps réel via WebSockets. Les équipes créent des boards, assignent des tâches et suivent la progression des sprints. L'automatisation des workflows permet de déclencher des actions automatiques sur des événements métier.",
-        bilan: "La partie temps réel avec les WebSockets a été la plus complexe à implémenter, notamment la gestion des conflits lors d'éditions simultanées. Next.js App Router avec Server Actions a considérablement simplifié la couche API.",
-        description: "SaaS de gestion de projets Kanban avec Next.js et collaboration temps réel.",
-        published: true,
-        technologies: [
-            {id: "t1", title: "Next.js", icon: "next", description: "App Router, Server Actions et Server Components pour une architecture hybride performante.", postId: "taskflow"},
-            {id: "t2", title: "TypeScript", icon: "typescript", description: "Typage strict end-to-end avec partage des types entre front et back via des modules communs.", postId: "taskflow"},
-            {id: "t3", title: "Tailwind CSS", icon: "tailwind", description: "Design system cohérent avec Tailwind, animations CSS pour le drag & drop des cartes.", postId: "taskflow"},
-        ],
-        functions: [
-            {id: "f1", title: "Boards Kanban drag & drop", description: "Glisser-déposer des cartes entre colonnes avec mise à jour optimiste et synchronisation temps réel.", postId: "taskflow"},
-            {id: "f2", title: "Automatisations de workflow", description: "Moteur de règles : déplacer une carte si X, notifier si Y, assigner automatiquement selon des critères.", postId: "taskflow"},
-        ],
-        images: [
-            {id: "i1", url: "assets/images/p1/p1-3.png", postId: "taskflow"},
-            {id: "i2", url: "assets/images/p1/p1-4.png", postId: "taskflow"},
-        ],
-    },
-
-    {
-        id: "devblog",
-        title: "DevBlog",
-        objectif: "Construire un blog technique personnel entièrement statique avec Nuxt Content, permettant de rédiger des articles en Markdown avec coloration syntaxique, table des matières automatique et recherche full-text côté client.",
-        preview: "Blog technique Nuxt.js/Nuxt Content avec rédaction en Markdown. Génération statique pour des performances maximales et un SEO optimal. Inclut une recherche full-text, une table des matières dynamique et une estimation du temps de lecture.",
-        bilan: "Nuxt Content a énormément simplifié la gestion du contenu Markdown. Le plus challengeant a été l'implémentation de la recherche full-text sans backend, résolue avec un index pré-généré au build et MiniSearch côté client.",
-        description: "Blog technique statique Nuxt.js avec Nuxt Content et génération de pages à partir de fichiers Markdown.",
-        published: true,
-        technologies: [
-            {id: "t1", title: "Nuxt.js", icon: "nuxt", description: "Framework Vue.js avec génération statique (SSG) pour des performances et un SEO optimaux.", postId: "devblog"},
-            {id: "t2", title: "Vue.js", icon: "vue", description: "Composants interactifs : table des matières dynamique, fil d'Ariane, lecteur de progression.", postId: "devblog"},
-            {id: "t3", title: "TypeScript", icon: "typescript", description: "Typage des modèles de contenu Markdown pour éviter les erreurs de configuration.", postId: "devblog"},
-        ],
-        functions: [
-            {id: "f1", title: "Rédaction Markdown avancée", description: "Support MDX avec composants Vue intégrés, coloration syntaxique Shiki et diagrammes Mermaid.", postId: "devblog"},
-            {id: "f2", title: "Recherche full-text client", description: "Index pré-généré au build, recherche instantanée avec MiniSearch sans requête serveur.", postId: "devblog"},
-        ],
-        images: [
-            {id: "i1", url: "assets/images/p1/p1-4.png", postId: "devblog"},
-            {id: "i2", url: "assets/images/p1/p1-1.png", postId: "devblog"},
-        ],
-    },
-
-    {
-        id: "sportapp",
-        title: "SportApp",
-        objectif: "Développer une application mobile Flutter de suivi sportif permettant de logger des séances d'entraînement, de suivre l'évolution des performances dans le temps et de générer des programmes d'entraînement personnalisés via une IA.",
-        preview: "Application Flutter de coaching sportif personnel. L'utilisateur enregistre ses séances, suit ses PR (personal records) et reçoit des recommandations d'entraînement adaptées à sa progression. Intégration avec les capteurs du téléphone pour la détection automatique d'exercices.",
-        bilan: "Le plus complexe a été l'intégration des capteurs IMU du téléphone pour la détection automatique des répétitions. L'algorithme de recommandation basé sur la surcharge progressive a nécessité une modélisation fine du domaine sportif.",
-        description: "Application mobile Flutter de tracking sportif avec IA pour la personnalisation des programmes.",
-        published: true,
-        technologies: [
-            {id: "t1", title: "Flutter", icon: "flutter", description: "UI riche et performante avec des animations fluides pour les graphiques de progression.", postId: "sportapp"},
-            {id: "t2", title: "Dart", icon: "dart", description: "Algorithmes de progression sportive et logique métier d'entraînement en Dart natif.", postId: "sportapp"},
-            {id: "t3", title: "Firebase", icon: "firebase", description: "Firestore pour la synchronisation des séances, Auth pour la gestion des comptes.", postId: "sportapp"},
-        ],
-        functions: [
-            {id: "f1", title: "Logger de séances", description: "Interface rapide pour enregistrer exercices, séries, répétitions et charges avec timer intégré.", postId: "sportapp"},
-            {id: "f2", title: "Graphiques de progression", description: "Visualisation des PR, volumes hebdomadaires et tendances sur 30/90 jours par groupe musculaire.", postId: "sportapp"},
-        ],
-        images: [
-            {id: "i1", url: "assets/images/p1/p1-1.png", postId: "sportapp"},
-            {id: "i2", url: "assets/images/p1/p1-3.png", postId: "sportapp"},
+            {id: "i1", url: "assets/images/p3/p3-4.jpg", postId: "ia-generative"},
+            {id: "i2", url: "assets/images/p3/p3-1.png", postId: "ia-generative"},
+            {id: "i3", url: "assets/images/p3/p3-2.png", postId: "ia-generative"},
+            {id: "i4", url: "assets/images/p3/p3-3.png", postId: "ia-generative"},
         ],
     },
 
