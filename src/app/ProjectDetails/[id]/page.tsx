@@ -29,9 +29,8 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
                 </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={100}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <ImageSlider images={project.images.slice(0, 2)} />
+            <AnimatedSection delay={200}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-6 md:p-8 hover:border-indigo-500/30 hover:bg-black/[0.11] dark:hover:bg-white/[0.07] transition-all duration-300 flex flex-col gap-4">
                         <span className="text-indigo-600 dark:text-indigo-400 text-xs font-medium tracking-widest uppercase">Aperçu</span>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
@@ -40,11 +39,7 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
                         <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent" />
                         <p className="text-gray-700 dark:text-white/70 text-sm leading-relaxed">{project.preview}</p>
                     </div>
-                </div>
-            </AnimatedSection>
 
-            <AnimatedSection delay={200}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-6 md:p-8 hover:border-indigo-500/30 hover:bg-black/[0.11] dark:hover:bg-white/[0.07] transition-all duration-300 flex flex-col gap-4">
                         <span className="text-indigo-600 dark:text-indigo-400 text-xs font-medium tracking-widest uppercase">Contexte</span>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900/60 dark:from-white dark:via-white dark:to-white/30">
@@ -53,8 +48,12 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
                         <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent" />
                         <p className="text-gray-700 dark:text-white/70 text-sm leading-relaxed">{project.objectif}</p>
                     </div>
-                    <ImageSlider images={project.images.slice(2)} />
                 </div>
+            </AnimatedSection>
+
+
+            <AnimatedSection delay={100}>
+                <ImageSlider images={project.images} />
             </AnimatedSection>
 
             <AnimatedSection delay={300}>

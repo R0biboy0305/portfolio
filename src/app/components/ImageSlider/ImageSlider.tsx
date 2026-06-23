@@ -37,7 +37,7 @@ export default function ImageSlider({ images }: { images: ProjectImage[] }) {
             <div className="flex flex-col items-center gap-3 w-full">
                 <div className="relative w-full rounded-2xl overflow-hidden bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 backdrop-blur-md">
                     <div
-                        className="relative aspect-[16/9] cursor-pointer"
+                        className="relative aspect-[8/3] cursor-pointer"
                         onClick={() => setLightboxOpen(true)}
                     >
                         <Image
@@ -96,7 +96,7 @@ export default function ImageSlider({ images }: { images: ProjectImage[] }) {
                     <button
                         onClick={closeLightbox}
                         aria-label="Fermer"
-                        className="absolute top-6 right-6 p-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"
+                        className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"
                     >
                         <X size={24} />
                     </button>

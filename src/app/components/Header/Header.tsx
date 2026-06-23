@@ -33,7 +33,7 @@ export default function Header() {
     }, []);
 
     return (
-        <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+        <header className="fixed bottom-6 md:top-6 left-1/2 -translate-x-1/2 z-50">
             <nav className="flex items-center gap-1 px-3 py-2 rounded-full bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/10 dark:border-white/10 shadow-lg shadow-black/10 dark:shadow-black/20">
                 <NavButton href="/#hero" isActive={activeSection === "hero"}>
                     <HomeIcon size={15} />

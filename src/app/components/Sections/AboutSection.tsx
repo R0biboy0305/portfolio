@@ -10,7 +10,7 @@ import AnimatedSection from "@/app/components/ui/AnimatedSection";
 const TABS = [
     { label: "Compétences", key: "stack" },
     { label: "Parcours",    key: "parcours" },
-    { label: "Formation",   key: "formation" },
+    { label: "Formation &  plus",   key: "formation" },
 ] as const;
 
 export default function AboutSection() {
