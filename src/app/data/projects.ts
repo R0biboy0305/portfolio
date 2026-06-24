@@ -236,6 +236,91 @@ const projects: Project[] = [
     },
 
     {
+        id: "cms-interne",
+        title: "CMS Interne Multi-Tenant",
+        objectif:
+            "Concevoir un CMS interne permettant de gérer le contenu de plusieurs sites internet depuis une interface unique. L'enjeu principal était de bâtir une architecture multi-tenant où une seule API Laravel alimente à la fois le CMS et les différents front-ends clients, tout en isolant les données de chaque tenant de manière transparente.",
+        preview:
+            "CMS interne développé en alternance avec Vue.js/Nuxt en front-end et une API Laravel multi-tenant. Grâce au package Tenancy, une seule API centralise la gestion de contenu pour plusieurs sites. Des middlewares personnalisés détectent automatiquement le tenant à chaque requête, permettant la création et la synchronisation instantanée de contenus entre tenants.",
+        bilan:
+            "Ce projet a été un vrai accélérateur de compétences. La prise en main de Vue.js, Nuxt et Laravel en contexte professionnel, combinée au travail collaboratif avec les autres développeurs de l'équipe, m'a poussé à monter rapidement en autonomie. Le défi le plus marquant a été la conception de l'architecture API unifiée : rassembler nos sites internet et le CMS derrière une seule API tout en garantissant l'isolation des données par tenant. La mise en place des middlewares de détection automatique du tenant a été la clé pour automatiser la distribution de contenu entre les différentes instances.",
+        description:
+            "CMS interne multi-tenant développé en alternance. Front-end Vue.js/Nuxt, API Laravel avec Tenancy for Laravel. Architecture centralisée permettant de piloter plusieurs sites depuis une seule interface et une seule API.",
+        published: true,
+        technologies: [
+            {
+                id: "t1",
+                title: "Vue.js",
+                icon: "vue",
+                description: "Framework front-end utilisé pour construire l'interface du CMS. Sa réactivité et son système de composants ont permis de créer une expérience d'édition de contenu fluide et intuitive pour les utilisateurs internes.",
+                postId: "cms-interne"
+            },
+            {
+                id: "t2",
+                title: "Nuxt",
+                icon: "nuxt",
+                description: "Surcouche SSR de Vue.js utilisée pour structurer le front-end du CMS avec un routage automatique, un rendu côté serveur et une architecture modulaire facilitant la maintenance à long terme.",
+                postId: "cms-interne"
+            },
+            {
+                id: "t3",
+                title: "Laravel",
+                icon: "laravel",
+                description: "Framework PHP servant de socle à l'API REST centralisée. Laravel fournit l'ORM Eloquent, le système de middleware, les migrations et la gestion d'authentification qui structurent l'ensemble du back-end.",
+                postId: "cms-interne"
+            },
+            {
+                id: "t4",
+                title: "PHP",
+                icon: "php",
+                description: "Langage serveur de l'API. Utilisé à travers Laravel pour implémenter la logique métier, les middlewares de détection de tenant et les contrôleurs REST.",
+                postId: "cms-interne"
+            },
+            {
+                id: "t5",
+                title: "MySQL",
+                icon: "mysql",
+                description: "Base de données relationnelle stockant les contenus, utilisateurs et configurations de chaque tenant. Conteneurisée dans Docker, elle garantit un environnement identique entre les postes de développement et la production.",
+                postId: "cms-interne"
+            },
+            {
+                id: "t6",
+                title: "Docker",
+                icon: "docker",
+                description: "L'ensemble de l'environnement de développement est conteneurisé avec Docker : API Laravel, base MySQL et services annexes. Cela permet à chaque développeur de l'équipe de travailler sur une stack identique, reproductible et isolée.",
+                postId: "cms-interne"
+            },
+        ],
+        functions: [
+            {
+                id: "f1",
+                title: "Architecture multi-tenant",
+                description: "Grâce au package Tenancy for Laravel, une seule API gère plusieurs tenants (sites clients). Chaque tenant dispose de ses propres données isolées, tout en partageant le même code applicatif et la même infrastructure.",
+                postId: "cms-interne"
+            },
+            {
+                id: "f2",
+                title: "Middleware de détection automatique du tenant",
+                description: "Des middlewares personnalisés interceptent chaque requête entrante pour identifier le tenant concerné. Cette détection automatique permet de router les opérations vers le bon contexte de données sans intervention manuelle, rendant la création et la gestion de contenus multi-tenant instantanée.",
+                postId: "cms-interne"
+            },
+            {
+                id: "f3",
+                title: "API centralisée sites + CMS",
+                description: "L'architecture repose sur une API unique qui alimente à la fois les sites internet publics et l'interface CMS interne. Cette centralisation simplifie la maintenance, garantit la cohérence des données et évite la duplication de logique métier.",
+                postId: "cms-interne"
+            },
+            {
+                id: "f4",
+                title: "Gestion de contenu multi-sites",
+                description: "L'interface CMS permet de créer, modifier et publier du contenu qui se propage instantanément sur les sites associés au tenant sélectionné. Un même contenu peut être dupliqué ou synchronisé entre plusieurs tenants en un clic.",
+                postId: "cms-interne"
+            },
+        ],
+        images: [],
+    },
+
+    {
         id: "projet-template",
         title: "Nom du projet",
         objectif: "Décrivez l'objectif principal du projet.",
