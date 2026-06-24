@@ -44,6 +44,8 @@ export default function ImageSlider({ images }: { images: ProjectImage[] }) {
                             src={`/${images[currentIndex].url}`}
                             alt={`Capture d'écran ${currentIndex + 1}`}
                             fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1080px"
+                            priority={currentIndex === 0}
                             className="object-cover transition-opacity duration-300"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />

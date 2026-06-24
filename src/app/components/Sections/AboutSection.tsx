@@ -42,6 +42,7 @@ export default function AboutSection() {
                                 alt="Photo de profil de Robin Bergmann"
                                 fill
                                 sizes="144px"
+                                priority
                                 className="object-cover"
                             />
                         </div>
