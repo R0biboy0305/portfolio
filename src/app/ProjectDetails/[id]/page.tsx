@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import { Github } from "lucide-react";
 import ImageSlider from "@/app/components/ImageSlider/ImageSlider";
 import TechFuncSlider from "@/app/components/TechFuncSlider/TechFuncSlider";
 import AnimatedSection from "@/app/components/ui/AnimatedSection";
@@ -26,6 +28,17 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
                         {project.title}
                     </h1>
                     <div className="w-16 h-[2px] bg-gradient-to-r from-indigo-500 to-transparent mt-2" />
+                    {project.repoUrl && (
+                        <Link
+                            href={project.repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 hover:border-black/20 dark:hover:border-white/20 text-gray-900 dark:text-white rounded-full text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 w-fit"
+                        >
+                            <Github size={16} />
+                            Voir le dépôt
+                        </Link>
+                    )}
                 </div>
             </AnimatedSection>
 

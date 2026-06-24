@@ -15,7 +15,6 @@ export type ProjectFunction = {
 
 export type ProjectImage = {
     id: string;
-    /** Chemin relatif depuis /public — ex: "assets/images/mon-projet.jpg" */
     url: string;
     postId: string;
 };
@@ -28,6 +27,7 @@ export type Project = {
     bilan: string;
     description: string;
     published: boolean;
+    repoUrl?: string;
     technologies: Technology[];
     functions: ProjectFunction[];
     images: ProjectImage[];
@@ -38,41 +38,42 @@ const projects: Project[] = [
         id: "usernightmare",
         title: "UserNightmare",
         objectif:
-            "UserNightmare a ainsi pour but de faire comprendre a l’utilisateur les objectifs ainsi que l’importance d’une bonne interface utilisateurs ainsi que les enjeux que represente une experience utilisateur.  D’un point de vue personnel, ce projet avait pour but de me permettre de m’introduire a React, un frmaework moderne et me créer de solides bases.",
+            "UserNightmare a pour but de faire comprendre à l'utilisateur l'importance d'une bonne interface et les enjeux que représente l'expérience utilisateur. En proposant deux versions d'un même site avec des missions variées, le projet illustre concrètement l'impact du design sur l'utilisabilité. D'un point de vue personnel, ce projet m'a permis de m'introduire à React, un framework moderne, et de me créer de solides bases.",
         preview:
-            "UserNightmare est une application web ludique illustrant les contrastes de l'expérience utilisateur. L'objectif pour l'utilisateur : réaliser des tâches simples sur deux interfaces opposées Mode « Good UX » : Mise en pratique des standards d'ergonomie et d'accessibilité. Mode « Nightmare » : Détournement des règles de l'UX pour créer le pire parcours utilisateur possible.",
+            "UserNightmare est une application web ludique illustrant les contrastes de l'expérience utilisateur. L'utilisateur doit réaliser des missions variées sur deux interfaces opposées : la version « Good UX » met en avant les bonnes pratiques d'ergonomie et d'accessibilité, tandis que la version « Nightmare » applique volontairement les pires choix de conception pour montrer à quel point il est difficile d'utiliser un site mal conçu.",
         bilan:
-            "Cette application web releve ainsi un challenge technique d’un point de vue personnelle mais aussi une réussite en therme d’apprentissage. En effet je suis parvenu a créer une application ludique trnasmettant les compléxité d’une conception d’interface a des utilisateurs. Cette derniere retranscrit les enjeux et enseignement que je souhaitais faire découvirir.",
+            "Cette application web relève un challenge technique d'un point de vue personnel, mais aussi une réussite en termes d'apprentissage. Je suis parvenu à créer une application ludique transmettant les complexités d'une conception d'interface à des utilisateurs. Elle retranscrit les enjeux et les enseignements que je souhaitais faire découvrir, tout en consolidant mes compétences sur React.",
         description:
-            "Portfolio développé pour mettre en valeur mon parcours et mes réalisations. Basé sur Next.js 15 avec App Router, Tailwind CSS v4, visuels 3D via Three.js et react-globe.gl.",
+            "Application web interactive développée avec React et Tailwind CSS pour sensibiliser aux enjeux de l'UX design. Deux versions d'un même site — Good UX et Nightmare — permettent de comparer les bonnes et mauvaises pratiques à travers des missions concrètes.",
         published: true,
+        repoUrl: 'https://github.com/R0biboy0305/SAE50A',
         technologies: [
             {
                 id: "t1",
                 title: "React.js",
                 icon: "react",
-                description: "React m’a ainsi permis de gérer des états globaux permettant de valider les taches de l’utilisateur. La force de React étant le re-render des composants sans rechargement permet ce switch instantané entre les 2 rendus",
+                description: "React m'a permis de gérer des états globaux pour valider les tâches de l'utilisateur. La force de React étant le re-render des composants sans rechargement, cela permet un switch instantané entre les deux rendus.",
                 postId: "usernightmare"
             },
             {
                 id: "t2",
                 title: "Tailwind CSS",
                 icon: "tailwind",
-                description: "Choisi pour sa flexibilité et son système de design natif. Il a permis d'assurer un Responsive Design parfait sur tous les écrans tout en garantissant des performances d'affichage optimales grâce à la purge des classes CSS inutilisées en production.",
+                description: "Choisi pour sa flexibilité et son système de design natif. Il a permis d'assurer un responsive design parfait sur tous les écrans tout en garantissant des performances d'affichage optimales grâce à la purge des classes CSS inutilisées en production.",
                 postId: "usernightmare"
             },
         ],
         functions: [
             {
                 id: "f1",
-                title: "Switch instantané ",
-                description: "Un bouton de switch permet de naviguer entre les 2 rendus de manieres instantané.",
+                title: "Switch instantané",
+                description: "Un bouton de switch permet de naviguer entre les deux rendus de manière instantanée.",
                 postId: "usernightmare"
             },
             {
                 id: "f2",
                 title: "Sauvegarde de données en LocalStorage",
-                description: "N’ayant pas concu de back-end et ne sauveguardant pas de données sensibles je sauvegarde en LocalStorage le taches accomplies ainsi que le pseudo et mot de passe de l’uitlisateur de sorte a conditionner et modifier l’affichage en fonciton.",
+                description: "N'ayant pas conçu de back-end et ne sauvegardant pas de données sensibles, je sauvegarde en LocalStorage les tâches accomplies ainsi que le pseudo et le mot de passe de l'utilisateur, de sorte à conditionner et modifier l'affichage en fonction.",
                 postId: "usernightmare"
             },
         ],
@@ -96,6 +97,7 @@ const projects: Project[] = [
         description:
             "Portfolio personnel développé avec Next.js 15 (App Router), React 19, TypeScript strict, Tailwind CSS v4, shadcn/ui, Three.js et react-globe.gl. Architecture full Server Components avec hydratation sélective.",
         published: true,
+        repoUrl: 'https://github.com/R0biboy0305/portfolio',
         technologies: [
             {
                 id: "t1",
@@ -317,7 +319,11 @@ const projects: Project[] = [
                 postId: "cms-interne"
             },
         ],
-        images: [],
+        images: [
+            {id: "i1", url: "assets/images/p4/p4-1.png", postId: "cms-interne"},
+            {id: "i2", url: "assets/images/p4/p4-3.png", postId: "cms-interne"},
+            {id: "i3", url: "assets/images/p4/p4-2.png", postId: "cms-interne"},
+        ],
     },
 
     {
