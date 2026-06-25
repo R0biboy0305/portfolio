@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
 
+/** Globe 3D interactif avec rotation automatique, adapté au thème clair/sombre. Chargé sans SSR. */
 export default function CustomGlobe() {
     const globeRef = useRef<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);

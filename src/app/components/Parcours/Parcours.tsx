@@ -43,6 +43,7 @@ const parcoursData = [
     },
 ];
 
+/** Timeline verticale des expériences professionnelles avec mise en avant du poste actuel. */
 export default function Parcours() {
     return (
         <div className="flex flex-col gap-0">

@@ -1,3 +1,4 @@
+/** Grille formation, langues, qualités et centres d'intérêt. */
 export default function Formation() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-900 dark:text-white">

@@ -1,6 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
+/**
+ * Lien de navigation du header avec état actif mis en surbrillance.
+ * @param href — Ancre de la section cible (ex : "/#projets").
+ * @param isActive — Indique si la section correspondante est actuellement visible.
+ */
 export default function NavButton({
     children,
     href,

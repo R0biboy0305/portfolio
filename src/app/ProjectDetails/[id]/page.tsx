@@ -6,8 +6,13 @@ import TechFuncSlider from "@/app/components/TechFuncSlider/TechFuncSlider";
 import AnimatedSection from "@/app/components/ui/AnimatedSection";
 import { notFound } from "next/navigation";
 import BackButton from "@/app/components/ui/BackButton";
+import DeviceFrame from "@/app/components/ui/DeviceFrame";
 import projects from "@/app/data/projects";
 
+/**
+ * Page de détail d'un projet : présentation, objectifs, slider d'images, technologies et bilan.
+ * @param params — Paramètres dynamiques contenant l'id (slug) du projet.
+ */
 export default async function ProjectDetails({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
     const project = projects.find((p) => p.id === id);
@@ -66,7 +71,9 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
 
 
             <AnimatedSection delay={100}>
-                <ImageSlider images={project.images} />
+                <DeviceFrame>
+                    <ImageSlider images={project.images} />
+                </DeviceFrame>
             </AnimatedSection>
 
             <AnimatedSection delay={300}>

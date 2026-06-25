@@ -10,9 +10,10 @@ import AnimatedSection from "@/app/components/ui/AnimatedSection";
 const TABS = [
     { label: "Compétences", key: "stack" },
     { label: "Parcours",    key: "parcours" },
-    { label: "Formation &  plus",   key: "formation" },
+    { label: "Formation & plus",    key: "formation" },
 ] as const;
 
+/** Section "À propos" avec onglets Compétences / Parcours / Formation. */
 export default function AboutSection() {
     const [step, setStep] = useState(0);
 

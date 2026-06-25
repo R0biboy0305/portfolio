@@ -196,6 +196,12 @@ const iconMap: Record<string, React.ElementType> = {
     "claude": Claude
 };
 
+/**
+ * Résout une clé de technologie vers son icône SVG correspondante.
+ * @param nameKey — Clé lowercase de l'icône (ex : "react", "laravel").
+ * @param size — Taille en pixels de l'icône.
+ * @param color — Couleur CSS de l'icône (hérite par défaut de currentColor).
+ */
 export default function IconTech({nameKey, size = 32, color="currentColor"}: {nameKey:string; size?: number; color?: string}) {
     const IconComponent = iconMap[nameKey.toLowerCase()];
 

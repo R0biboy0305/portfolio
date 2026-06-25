@@ -6,6 +6,10 @@ import { createPortal } from "react-dom";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ProjectImage } from "@/app/data/projects";
 
+/**
+ * Carrousel d'images avec navigation par flèches, indicateurs de position et lightbox plein écran.
+ * @param images — Liste des images du projet (url relative depuis /public).
+ */
 export default function ImageSlider({ images }: { images: ProjectImage[] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);

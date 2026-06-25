@@ -3,8 +3,14 @@
 import React, { useState } from "react";
 import IconTech from "@/app/components/Icon/Icon";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import type { Technology, ProjectFunction } from "@/app/data/projects";
 
-export default function TechFuncSlider({ technologies, functions }: { technologies: any[], functions: any[] }) {
+/**
+ * Slider horizontal avec deux panneaux : Technologies utilisées et Fonctionnalités principales.
+ * @param technologies — Liste des technologies du projet.
+ * @param functions — Liste des fonctionnalités du projet.
+ */
+export default function TechFuncSlider({ technologies, functions }: { technologies: Technology[], functions: ProjectFunction[] }) {
 
     const [activeTab, setActiveTab] = useState<"tech" | "func">("tech");
 

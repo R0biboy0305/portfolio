@@ -8,6 +8,10 @@ import IconTech from "@/app/components/Icon/Icon";
 import AnimatedSection from "@/app/components/ui/AnimatedSection";
 import { Project } from "@/app/data/projects";
 
+/**
+ * Grille de cartes projets avec aperçu, technologies et lien vers la page de détails.
+ * @param initialProjects — Liste des projets publiés à afficher.
+ */
 export default function ProjetsList({ initialProjects }: { initialProjects: Project[] }) {
     return (
         <div className="text-gray-900 dark:text-white flex flex-col gap-10 sm:gap-12 md:gap-16 max-w-6xl mx-auto py-24 px-6 relative">

@@ -12,6 +12,7 @@ const GlobeDynamic = dynamic(() => import("@/app/components/Globe/Globe"), {
     ),
 });
 
+/** Section hero de la page d'accueil : présentation + globe 3D (chargé dynamiquement). */
 export default function HeroSection() {
     return (
         <div className="flex flex-col lg:flex-row items-center justify-between max-w-6xl mx-auto w-full min-h-[calc(100vh-8rem)] gap-8 py-16 sm:py-12 px-5 sm:px-6">

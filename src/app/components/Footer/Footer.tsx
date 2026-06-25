@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Github, Linkedin, Download } from "lucide-react";
 
+/** Footer avec liens de navigation, téléchargement du CV et réseaux sociaux. */
 export default function Footer() {
     return (
         <footer className="flex flex-col gap-6 w-full items-center py-8 border-t border-black/15 dark:border-white/10">

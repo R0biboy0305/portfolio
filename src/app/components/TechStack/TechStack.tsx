@@ -44,6 +44,7 @@ const techTools: Category[] = [
     },
 ];
 
+/** Carte glassmorphism affichant une catégorie de compétences sous forme de grille d'icônes. */
 function CategoryCard({ category }: { category: Category }) {
     return (
         <div className="bg-black/[0.07] dark:bg-white/[0.04] backdrop-blur-sm border border-black/15 dark:border-white/10 rounded-2xl p-6 hover:border-indigo-500/30 hover:bg-black/[0.11] dark:hover:bg-white/[0.07] transition-all duration-300">
@@ -70,6 +71,7 @@ function CategoryCard({ category }: { category: Category }) {
     );
 }
 
+/** Grille de compétences organisées par catégorie (frameworks, langages, outils). */
 export default function TechStack() {
     return (
         <div className="flex flex-col gap-4">

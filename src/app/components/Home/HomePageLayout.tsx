@@ -15,6 +15,7 @@ const mainTech = [
     { nameKey: "Laravel",    label: "Laravel" },
 ];
 
+/** Section hero : titre, présentation, CTA et icônes des technologies principales. */
 export default function HomePageLayout() {
     return (
         <div className="flex flex-col gap-10 max-w-xl px-6 lg:px-0 animate-[fadeIn_1s_ease-out_forwards]">

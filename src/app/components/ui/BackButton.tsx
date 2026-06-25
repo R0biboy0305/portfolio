@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 
+/** Bouton de retour à la page précédente via `router.back()`. */
 export default function BackButton() {
     const router = useRouter();
 

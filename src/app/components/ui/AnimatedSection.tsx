@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 
+/**
+ * Wrapper qui anime l'apparition de son contenu au scroll via IntersectionObserver.
+ * @param children — Contenu à animer.
+ * @param className — Classes CSS additionnelles.
+ * @param delay — Délai d'apparition en ms (utile pour décaler les éléments d'une liste).
+ */
 export default function AnimatedSection({
     children,
     className = "",

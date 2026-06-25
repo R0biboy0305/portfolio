@@ -8,6 +8,7 @@ import { useTheme } from "next-themes";
 const SECTIONS = ["hero", "projets", "about", "contact"] as const;
 type SectionId = typeof SECTIONS[number];
 
+/** Header flottant avec navigation, scroll spy et toggle thème clair/sombre. */
 export default function Header() {
     const [activeSection, setActiveSection] = useState<SectionId>("hero");
     const [mounted, setMounted] = useState(false);
